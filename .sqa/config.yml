@@ -1,0 +1,76 @@
+config:
+  credentials: []
+  project_repos:
+    github.com/EOSC-synergy/sqaaas-tooling:
+      branch: release/2.0.1
+      repo: https://github.com/EOSC-synergy/sqaaas-tooling
+    github.com/TheIdentitySelector/thiss-mdq:
+      branch: master
+      repo: https://github.com/TheIdentitySelector/thiss-mdq
+environment:
+  JPL_DOCKERFORCEBUILD: enabled
+  JPL_KEEPGOING: enabled
+sqa_criteria:
+  QC.Acc:
+    repos:
+      github.com/TheIdentitySelector/thiss-mdq git:
+        commands:
+        - /usr/bin/env sh .sqa/script.sloppy-copper-caterpillar.sh
+        container: qc.acc_squeaky-tomato-lynx
+  QC.Doc:
+    repos:
+      github.com/TheIdentitySelector/thiss-mdq find_doc_files.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.whiny-aquamarine-barracuda.sh
+        container: qc.doc_muzzy-puce-chimpanzee
+      github.com/TheIdentitySelector/thiss-mdq git:
+        commands:
+        - /usr/bin/env sh .sqa/script.boozy-taupe-chinchilla.sh
+        container: qc.doc_shaggy-ultramarine-ibis
+      github.com/TheIdentitySelector/thiss-mdq markdownlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.sleepy-yellow-bobcat.sh
+        container: qc.doc_homely-apricot-bonobo
+      github.com/TheIdentitySelector/thiss-mdq restructuredtext-lint:
+        commands:
+        - /usr/bin/env sh .sqa/script.cozy-rose-balinese.sh
+        container: qc.doc_queasy-lilac-hound
+  QC.Lic:
+    repos:
+      github.com/TheIdentitySelector/thiss-mdq licensee:
+        commands:
+        - /usr/bin/env sh .sqa/script.sloppy-chocolate-stingray.sh
+        container: qc.lic_smelly-fuchsia-kiwi
+  QC.Sec:
+    repos:
+      github.com/TheIdentitySelector/thiss-mdq bandit:
+        commands:
+        - /usr/bin/env sh .sqa/script.dorky-zucchini-magpie.sh
+        container: qc.sec_lovely-brass-liger
+  QC.Sty:
+    repos:
+      github.com/TheIdentitySelector/thiss-mdq flake8:
+        commands:
+        - /usr/bin/env sh .sqa/script.snoopy-olivine-dachsbracke.sh
+        container: qc.sty_skimpy-persimmon-jackal
+      github.com/TheIdentitySelector/thiss-mdq hadolint:
+        commands:
+        - /usr/bin/env sh .sqa/script.bluesy-fuchsia-ocelot.sh
+        container: qc.sty_shaky-cerise-devil
+      github.com/TheIdentitySelector/thiss-mdq jsonlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.surly-lemon-stoat.sh
+        container: qc.sty_snappy-amaranth-burmese
+  QC.Uni:
+    repos:
+      github.com/TheIdentitySelector/thiss-mdq pytest:
+        commands:
+        - /usr/bin/env sh .sqa/script.freaky-bistre-newt.sh
+        container: qc.uni_craggy-red-antelope
+  QC.Ver:
+    repos:
+      github.com/TheIdentitySelector/thiss-mdq get_git_tags.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.stuffy-yellow-hedgehog.sh
+        container: qc.ver_nippy-ecru-tetra
+timeout: 5400
