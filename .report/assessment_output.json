@@ -1,0 +1,1967 @@
+{
+    "meta": {
+        "version": "3.2.1",
+        "report_json_url": "https://raw.githubusercontent.com/eosc-synergy/thiss-mdq.assess.sqaaas/master/.report/assessment_output.json"
+    },
+    "repository": [
+        {
+            "url": "https://github.com/TheIdentitySelector/thiss-mdq",
+            "name": "TheIdentitySelector/thiss-mdq",
+            "tag": "master",
+            "commit_id": "71ee5d435177077b62d906046f7f3149bc4050f6",
+            "is_main_repo": true,
+            "avatar_url": "https://avatars.githubusercontent.com/u/44675949?v=4",
+            "description": null,
+            "languages": null,
+            "topics": null,
+            "stargazers_count": null,
+            "watchers_count": null,
+            "contributors_count": null,
+            "forks_count": null,
+            "badge_status": "no_badge"
+        }
+    ],
+    "report": {
+        "QC.Acc": {
+            "valid": true,
+            "subcriteria": {
+                "QC.Acc01": {
+                    "description": "Is the source code managed with a Version Control System?",
+                    "requirement_level": "MUST",
+                    "hint": "The source code shall be managed with Git and remain publicly available for this criterion to be successful. Please check <a href=\"https://git-scm.com/book/es/v2\" target=\"_blank\">Pro Git</a> docs about how to get started using Git tool. Guidelines provided by the most popular social coding platforms (<a href=\"https://docs.github.com/get-started\" target=\"_blank\">GitHub</a>, <a href=\"https://about.gitlab.com/get-started/\" target=\"_blank\">GitLab</a>) are also a good starting point",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "Source code uses Git for version control",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-boolean",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "git",
+                                "lang": "scm",
+                                "version": "2.34.1",
+                                "docker": {
+                                    "image": "bitnami/git:2.34.1",
+                                    "reviewed": "2021-12-30"
+                                },
+                                "ci": {
+                                    "name": "QC.Acc github.com/TheIdentitySelector/thiss-mdq git",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "git rev-parse --is-inside-work-tree"
+                                    ],
+                                    "stdout_text": "true",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/thiss-mdq.assess.sqaaas/job/master/1/execution/node/34/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/thiss-mdq.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {}
+                        }
+                    ],
+                    "valid": true
+                }
+            },
+            "coverage": {
+                "percentage": 100,
+                "total_subcriteria": 1,
+                "success_subcriteria": 1
+            }
+        },
+        "QC.Doc": {
+            "valid": false,
+            "subcriteria": {
+                "QC.Doc06.1": {
+                    "description": "Is the software scope outlined in the code repository?",
+                    "requirement_level": "MUST",
+                    "hint": "A README file presents your software to the audience interested in your software project. Several online sites simplify the task of creating the README file, such as <a href=\"https://www.makeareadme.com/\" target=\"_blank\">Make a README</a> or <a href=\"https://readme.so/\" target=\"_blank\">readme.so</a> sites. Be sure to add it to the code repository's root path",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "A README file is present in the code repository",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-find_doc_files",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "find_doc_files.py",
+                                "lang": "Contribution-enabling Files",
+                                "version": "latest",
+                                "docker": {
+                                    "dockerfile": "QC.Doc/Dockerfile",
+                                    "reviewed": "2022-01-26"
+                                },
+                                "ci": {
+                                    "name": "QC.Doc github.com/TheIdentitySelector/thiss-mdq find_doc_files.py",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "find_doc_files.py --file_type all"
+                                    ],
+                                    "stdout_text": "{\"README\": [{\"file_name\": \"README.md\", \"size\": 410}], \"CODE_OF_CONDUCT\": [], \"CONTRIBUTING\": []}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/thiss-mdq.assess.sqaaas/job/master/1/execution/node/43/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/thiss-mdq.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "README": [
+                                    {
+                                        "file_name": "README.md",
+                                        "size": 410
+                                    }
+                                ],
+                                "CODE_OF_CONDUCT": [],
+                                "CONTRIBUTING": []
+                            }
+                        }
+                    ],
+                    "valid": true
+                },
+                "QC.Doc06.3": {
+                    "description": "Does the project establish a code of conduct for its participants?",
+                    "requirement_level": "MUST",
+                    "hint": "A CODE_OF_CONDUCT file sets the path for a constructive, respectful and positive atmosphere among all the contributors in your software project. Of course you can define your own, but in case you want to rely on external and widely-adopted code of conducts check out some of the most popular ones: <a href=\"https://contributor-covenant.org/\" target=\"_blank\">Contributor Covenant</a> or <a href=\"https://web.archive.org/web/20200330154000/http://citizencodeofconduct.org/\" target=\"_blank\">Citizen Code of Conduct</a>",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "A CODE_OF_CONDUCT file is not present in the code repository",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-find_doc_files",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "find_doc_files.py",
+                                "lang": "Contribution-enabling Files",
+                                "version": "latest",
+                                "docker": {
+                                    "dockerfile": "QC.Doc/Dockerfile",
+                                    "reviewed": "2022-01-26"
+                                },
+                                "ci": {
+                                    "name": "QC.Doc github.com/TheIdentitySelector/thiss-mdq find_doc_files.py",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "find_doc_files.py --file_type all"
+                                    ],
+                                    "stdout_text": "{\"README\": [{\"file_name\": \"README.md\", \"size\": 410}], \"CODE_OF_CONDUCT\": [], \"CONTRIBUTING\": []}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/thiss-mdq.assess.sqaaas/job/master/1/execution/node/43/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/thiss-mdq.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "README": [
+                                    {
+                                        "file_name": "README.md",
+                                        "size": 410
+                                    }
+                                ],
+                                "CODE_OF_CONDUCT": [],
+                                "CONTRIBUTING": []
+                            }
+                        }
+                    ],
+                    "valid": false,
+                    "required_for_next_level_badge": true
+                },
+                "QC.Doc06.2": {
+                    "description": "Is there a clear path or guidelines on how to contribute to the code?",
+                    "requirement_level": "MUST",
+                    "hint": "A CONTRIBUTING file shall be present in the root path of the code repository describing the expected workflow to follow when adding contributions. Please check <a href=\"https://mozillascience.github.io/working-open-workshop/contributing/\" target=\"_blank\">Mozilla's guidelines</a> and <a href=\"https://github.com/github/docs/blob/main/CONTRIBUTING.md\" target=\"_blank\">GitHub's CONTRIBUTING.md example</a> to get inspired on how to write a good CONTRIBUTING file",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "A CONTRIBUTING file is not present in the code repository",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-find_doc_files",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "find_doc_files.py",
+                                "lang": "Contribution-enabling Files",
+                                "version": "latest",
+                                "docker": {
+                                    "dockerfile": "QC.Doc/Dockerfile",
+                                    "reviewed": "2022-01-26"
+                                },
+                                "ci": {
+                                    "name": "QC.Doc github.com/TheIdentitySelector/thiss-mdq find_doc_files.py",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "find_doc_files.py --file_type all"
+                                    ],
+                                    "stdout_text": "{\"README\": [{\"file_name\": \"README.md\", \"size\": 410}], \"CODE_OF_CONDUCT\": [], \"CONTRIBUTING\": []}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/thiss-mdq.assess.sqaaas/job/master/1/execution/node/43/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/thiss-mdq.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "README": [
+                                    {
+                                        "file_name": "README.md",
+                                        "size": 410
+                                    }
+                                ],
+                                "CODE_OF_CONDUCT": [],
+                                "CONTRIBUTING": []
+                            }
+                        }
+                    ],
+                    "valid": false,
+                    "required_for_next_level_badge": true
+                },
+                "QC.Doc01.1": {
+                    "description": "Are docs managed in the same repository as code?",
+                    "requirement_level": "MAY",
+                    "hint": "This subcriterion will succeed if the documentation files exist on the same repository as the source code, e.g. under a <code>docs/</code> folder",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "Documentation resides in the same repository as code",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-boolean",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "git",
+                                "lang": null,
+                                "version": null,
+                                "docker": null,
+                                "ci": {
+                                    "name": "QC.Doc github.com/TheIdentitySelector/thiss-mdq git",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "git rev-parse --is-inside-work-tree"
+                                    ],
+                                    "stdout_text": "true",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/thiss-mdq.assess.sqaaas/job/master/1/execution/node/52/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/thiss-mdq.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {}
+                        }
+                    ],
+                    "valid": true
+                },
+                "QC.Doc02.X": {
+                    "description": "Are docs following a style for the Markdown markup language?",
+                    "requirement_level": "MAY",
+                    "hint": "When using a docs-as-code approach, the style of the markup language is being checked. SQAaaS relies on <a href=\"https://github.com/markdownlint/markdownlint/\" target=\"_blank\">markdownlint</a> for Markdown files and <a href=\"https://github.com/twolfson/restructuredtext-lint/\" target=\"_blank\">restructuredtext-lint</a> for reStructuredText",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "Docs are not fully compliant with markdownlint standard",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-markdownlint",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "markdownlint",
+                                "lang": "Markdown",
+                                "version": "0.11.0",
+                                "docker": {
+                                    "dockerfile": "QC.Doc/markdownlint/Dockerfile",
+                                    "reviewed": "1970-01-01"
+                                },
+                                "ci": {
+                                    "name": "QC.Doc github.com/TheIdentitySelector/thiss-mdq markdownlint",
+                                    "status": "FAILED",
+                                    "stdout_command": [
+                                        "mdl --json ."
+                                    ],
+                                    "stdout_text": "[{\"filename\":\"./README.md\",\"line\":7,\"rule\":\"MD009\",\"aliases\":[\"no-trailing-spaces\"],\"description\":\"Trailing spaces\"},{\"filename\":\"./RELEASE.md\",\"line\":17,\"rule\":\"MD013\",\"aliases\":[\"line-length\"],\"description\":\"Line length\"},{\"filename\":\"./RELEASE.md\",\"line\":2,\"rule\":\"MD026\",\"aliases\":[\"no-trailing-punctuation\"],\"description\":\"Trailing punctuation in header\"},{\"filename\":\"./RELEASE.md\",\"line\":11,\"rule\":\"MD031\",\"aliases\":[\"blanks-around-fences\"],\"description\":\"Fenced code blocks should be surrounded by blank lines\"},{\"filename\":\"./RELEASE.md\",\"line\":22,\"rule\":\"MD046\",\"aliases\":[\"code-block-style\"],\"description\":\"Code block style\"},{\"filename\":\"./SECURITY.md\",\"line\":12,\"rule\":\"MD012\",\"aliases\":[\"no-multiple-blanks\"],\"description\":\"Multiple consecutive blank lines\"}]",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/thiss-mdq.assess.sqaaas/job/master/1/execution/node/61/log?consoleFull"
+                                },
+                                "level": "RECOMMENDED",
+                                "build_repo": "https://github.com/eosc-synergy/thiss-mdq.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "./README.md": {
+                                    "MD009": {
+                                        "description": "Trailing spaces",
+                                        "line": [
+                                            7
+                                        ]
+                                    }
+                                },
+                                "./RELEASE.md": {
+                                    "MD013": {
+                                        "description": "Line length",
+                                        "line": [
+                                            17
+                                        ]
+                                    },
+                                    "MD026": {
+                                        "description": "Trailing punctuation in header",
+                                        "line": [
+                                            2
+                                        ]
+                                    },
+                                    "MD031": {
+                                        "description": "Fenced code blocks should be surrounded by blank lines",
+                                        "line": [
+                                            11
+                                        ]
+                                    },
+                                    "MD046": {
+                                        "description": "Code block style",
+                                        "line": [
+                                            22
+                                        ]
+                                    }
+                                },
+                                "./SECURITY.md": {
+                                    "MD012": {
+                                        "description": "Multiple consecutive blank lines",
+                                        "line": [
+                                            12
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "valid": false,
+                            "message": "Docs are not fully compliant with restructuredtext-lint standard",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-markdownlint",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "restructuredtext-lint",
+                                "lang": "reStructuredText",
+                                "version": "1.3.2",
+                                "docker": {
+                                    "dockerfile": "QC.Doc/restructuredtext-lint/Dockerfile",
+                                    "reviewed": "2022-01-18"
+                                },
+                                "ci": {
+                                    "name": "QC.Doc github.com/TheIdentitySelector/thiss-mdq restructuredtext-lint",
+                                    "status": "FAILED",
+                                    "stdout_command": [
+                                        "rst-lint --level warning --format json ."
+                                    ],
+                                    "stdout_text": "[{\"line\": 11, \"source\": \"./docs/index.rst\", \"level\": 3, \"type\": \"ERROR\", \"message\": \"Unknown directive type \\\"toctree\\\".\", \"full_message\": \"Unknown directive type \\\"toctree\\\".\\n\\n.. toctree::\\n   :maxdepth: 2\\n   :caption: Contents:\\n\\n   install\\n   api\\n   releasenotes\\n\\n\"}, {\"line\": 23, \"source\": \"./docs/index.rst\", \"level\": 3, \"type\": \"ERROR\", \"message\": \"Unknown interpreted text role \\\"ref\\\".\", \"full_message\": \"Unknown interpreted text role \\\"ref\\\".\"}, {\"line\": 24, \"source\": \"./docs/index.rst\", \"level\": 3, \"type\": \"ERROR\", \"message\": \"Unknown interpreted text role \\\"ref\\\".\", \"full_message\": \"Unknown interpreted text role \\\"ref\\\".\"}, {\"line\": 6, \"source\": \"./docs/install.rst\", \"level\": 2, \"type\": \"WARNING\", \"message\": \"Cannot analyze code. Pygments package not found.\", \"full_message\": \"Cannot analyze code. Pygments package not found.\"}, {\"line\": 12, \"source\": \"./docs/install.rst\", \"level\": 2, \"type\": \"WARNING\", \"message\": \"Cannot analyze code. Pygments package not found.\", \"full_message\": \"Cannot analyze code. Pygments package not found.\"}, {\"line\": 18, \"source\": \"./docs/install.rst\", \"level\": 2, \"type\": \"WARNING\", \"message\": \"Cannot analyze code. Pygments package not found.\", \"full_message\": \"Cannot analyze code. Pygments package not found.\"}]",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/thiss-mdq.assess.sqaaas/job/master/1/execution/node/70/log?consoleFull"
+                                },
+                                "level": "RECOMMENDED",
+                                "build_repo": "https://github.com/eosc-synergy/thiss-mdq.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": [
+                                {
+                                    "line": 11,
+                                    "source": "./docs/index.rst",
+                                    "level": 3,
+                                    "type": "ERROR",
+                                    "message": "Unknown directive type \"toctree\".",
+                                    "full_message": "Unknown directive type \"toctree\".\n\n.. toctree::\n   :maxdepth: 2\n   :caption: Contents:\n\n   install\n   api\n   releasenotes\n\n"
+                                },
+                                {
+                                    "line": 23,
+                                    "source": "./docs/index.rst",
+                                    "level": 3,
+                                    "type": "ERROR",
+                                    "message": "Unknown interpreted text role \"ref\".",
+                                    "full_message": "Unknown interpreted text role \"ref\"."
+                                },
+                                {
+                                    "line": 24,
+                                    "source": "./docs/index.rst",
+                                    "level": 3,
+                                    "type": "ERROR",
+                                    "message": "Unknown interpreted text role \"ref\".",
+                                    "full_message": "Unknown interpreted text role \"ref\"."
+                                },
+                                {
+                                    "line": 6,
+                                    "source": "./docs/install.rst",
+                                    "level": 2,
+                                    "type": "WARNING",
+                                    "message": "Cannot analyze code. Pygments package not found.",
+                                    "full_message": "Cannot analyze code. Pygments package not found."
+                                },
+                                {
+                                    "line": 12,
+                                    "source": "./docs/install.rst",
+                                    "level": 2,
+                                    "type": "WARNING",
+                                    "message": "Cannot analyze code. Pygments package not found.",
+                                    "full_message": "Cannot analyze code. Pygments package not found."
+                                },
+                                {
+                                    "line": 18,
+                                    "source": "./docs/install.rst",
+                                    "level": 2,
+                                    "type": "WARNING",
+                                    "message": "Cannot analyze code. Pygments package not found.",
+                                    "full_message": "Cannot analyze code. Pygments package not found."
+                                }
+                            ]
+                        }
+                    ],
+                    "valid": false,
+                    "required_for_next_level_badge": false
+                }
+            },
+            "coverage": {
+                "percentage": 40,
+                "total_subcriteria": 5,
+                "success_subcriteria": 2
+            }
+        },
+        "QC.Lic": {
+            "valid": true,
+            "subcriteria": {
+                "QC.Lic01": {
+                    "description": "Is code licensed to be freely used, modified and distributed by others?",
+                    "requirement_level": "MUST",
+                    "hint": "<p>Your source code repository shall be distributed under an open source license for this subcriterion to pass successfully. Be sure to have a license file present in the code repository matching the name <code>LICENSE</code> with optional extensions (depending on the format used): <code>[.md|.rst|.txt]</code>.</p><p>Valid licenses are any of those approved either by the <a href=\"https://opensource.org/licenses\" target=\"_blank\">Open Source Initiative</a> and/or the Free Software Foundation <a href=\"https://www.gnu.org/licenses/license-list.html\" target=\"_blank\"></a>. You can also check the <a href=\"https://choosealicense.com/\" target=\"_blank\">choosealicense.com</a> site</p>",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "An Open Source license found in the code repository: BSD-3-Clause",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-licensee",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "licensee",
+                                "lang": "license",
+                                "version": "9.17.0",
+                                "docker": {
+                                    "image": "eoscsynergy/sqaaas-licensee:9.17.0",
+                                    "reviewed": "2021-06-28"
+                                },
+                                "ci": {
+                                    "name": "QC.Lic github.com/TheIdentitySelector/thiss-mdq licensee",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "licensee detect . --confidence 60 --json"
+                                    ],
+                                    "stdout_text": "{\"licenses\":[{\"key\":\"bsd-3-clause\",\"spdx_id\":\"BSD-3-Clause\",\"meta\":{\"title\":\"BSD 3-Clause \\\"New\\\" or \\\"Revised\\\" License\",\"source\":\"https://spdx.org/licenses/BSD-3-Clause.html\",\"description\":\"A permissive license similar to the <a href=\\\"/licenses/bsd-2-clause/\\\">BSD 2-Clause License</a>, but with a 3rd clause that prohibits others from using the name of the copyright holder or its contributors to promote derived products without written consent.\",\"how\":\"Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.\",\"using\":{\"Flutter\":\"https://github.com/flutter/flutter/blob/master/LICENSE\",\"LevelDB\":\"https://github.com/google/leveldb/blob/master/LICENSE\",\"Quill\":\"https://github.com/quilljs/quill/blob/develop/LICENSE\"},\"featured\":false,\"hidden\":false,\"nickname\":\"Modified BSD License\",\"note\":null},\"url\":\"http://choosealicense.com/licenses/bsd-3-clause/\",\"rules\":{\"permissions\":[{\"tag\":\"commercial-use\",\"label\":\"Commercial use\",\"description\":\"The licensed material and derivatives may be used for commercial purposes.\"},{\"tag\":\"modifications\",\"label\":\"Modification\",\"description\":\"The licensed material may be modified.\"},{\"tag\":\"distribution\",\"label\":\"Distribution\",\"description\":\"The licensed material may be distributed.\"},{\"tag\":\"private-use\",\"label\":\"Private use\",\"description\":\"The licensed material may be used and modified in private.\"}],\"conditions\":[{\"tag\":\"include-copyright\",\"label\":\"License and copyright notice\",\"description\":\"A copy of the license and copyright notice must be included with the licensed material.\"}],\"limitations\":[{\"tag\":\"liability\",\"label\":\"Liability\",\"description\":\"This license includes a limitation of liability.\"},{\"tag\":\"warranty\",\"label\":\"Warranty\",\"description\":\"This license explicitly states that it does NOT provide any warranty.\"}]},\"fields\":[{\"name\":\"year\",\"description\":\"The current year\"},{\"name\":\"fullname\",\"description\":\"The full name or username of the repository owner\"}],\"other\":false,\"gpl\":false,\"lgpl\":false,\"cc\":false},{\"key\":\"bsd-2-clause\",\"spdx_id\":\"BSD-2-Clause\",\"meta\":{\"title\":\"BSD 2-Clause \\\"Simplified\\\" License\",\"source\":\"https://spdx.org/licenses/BSD-2-Clause.html\",\"description\":\"A permissive license that comes in two variants, the <a href=\\\"/licenses/bsd-2-clause/\\\">BSD 2-Clause</a> and <a href=\\\"/licenses/bsd-3-clause/\\\">BSD 3-Clause</a>. Both have very minute differences to the MIT license.\",\"how\":\"Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.\",\"using\":{\"go-redis\":\"https://github.com/go-redis/redis/blob/master/LICENSE\",\"Homebrew\":\"https://github.com/Homebrew/brew/blob/master/LICENSE.txt\",\"Pony\":\"https://github.com/ponylang/ponyc/blob/master/LICENSE\"},\"featured\":false,\"hidden\":false,\"nickname\":null,\"note\":null},\"url\":\"http://choosealicense.com/licenses/bsd-2-clause/\",\"rules\":{\"permissions\":[{\"tag\":\"commercial-use\",\"label\":\"Commercial use\",\"description\":\"The licensed material and derivatives may be used for commercial purposes.\"},{\"tag\":\"modifications\",\"label\":\"Modification\",\"description\":\"The licensed material may be modified.\"},{\"tag\":\"distribution\",\"label\":\"Distribution\",\"description\":\"The licensed material may be distributed.\"},{\"tag\":\"private-use\",\"label\":\"Private use\",\"description\":\"The licensed material may be used and modified in private.\"}],\"conditions\":[{\"tag\":\"include-copyright\",\"label\":\"License and copyright notice\",\"description\":\"A copy of the license and copyright notice must be included with the licensed material.\"}],\"limitations\":[{\"tag\":\"liability\",\"label\":\"Liability\",\"description\":\"This license includes a limitation of liability.\"},{\"tag\":\"warranty\",\"label\":\"Warranty\",\"description\":\"This license explicitly states that it does NOT provide any warranty.\"}]},\"fields\":[{\"name\":\"year\",\"description\":\"The current year\"},{\"name\":\"fullname\",\"description\":\"The full name or username of the repository owner\"}],\"other\":false,\"gpl\":false,\"lgpl\":false,\"cc\":false}],\"matched_files\":[{\"filename\":\"LICENSE.txt\",\"content\":\"Copyright 2018-2019 SUNET. All rights reserved.\\n\\nRedistribution and use in source and binary forms, with or without modification, are\\npermitted provided that the following conditions are met:\\n\\n   1. Redistributions of source code must retain the above copyright notice, this list of\\n      conditions and the following disclaimer.\\n\\n   2. Redistributions in binary form must reproduce the above copyright notice, this list\\n      of conditions and the following disclaimer in the documentation and/or other materials\\n      provided with the distribution.\\n\\nTHIS SOFTWARE IS PROVIDED BY SUNET ``AS IS'' AND ANY EXPRESS OR IMPLIED\\nWARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND\\nFITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL SUNET OR\\nCONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR\\nCONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON\\nANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING\\nNEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF\\nADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\\n\\nThe views and conclusions contained in the software and documentation are those of the\\nauthors and should not be interpreted as representing official policies, either expressed\\nor implied, of SUNET.\\n\",\"content_hash\":\"84f3cc8e44aac51a7e27cff87324242b9a17df8c\",\"content_normalized\":\"redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: - redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. - redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. this software is provided by sunet ''as is'' and any express or implied warranties, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose are disclaimed. in no event shall sunet or contributors be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of this software, even if advised of the possibility of such damage. the views and conclusions contained in the software and documentation are those of the authors and should not be interpreted as representing official policies, either expressed or implied, of sunet.\",\"matcher\":{\"name\":\"dice\",\"confidence\":86.69527896995709},\"matched_license\":\"BSD-3-Clause\",\"attribution\":\"Copyright 2018-2019 SUNET. All rights reserved.\"},{\"filename\":\"package.json\",\"content\":\"{\\n  \\\"name\\\": \\\"thiss-mdq\\\",\\n  \\\"version\\\": \\\"1.5.0b6\\\",\\n  \\\"description\\\": \\\"A minimal JSON-only MDQ\\\",\\n  \\\"main\\\": \\\"index.js\\\",\\n  \\\"homepage\\\": \\\"https://github.com/TheIdentitySelector/thiss-mdq\\\",\\n  \\\"type\\\": \\\"module\\\",\\n  \\\"repository\\\": {\\n    \\\"type\\\": \\\"git\\\",\\n    \\\"url\\\": \\\"https://github.com/TheIdentitySelector/thiss-mdq\\\"\\n  },\\n  \\\"bugs\\\": {\\n    \\\"url\\\": \\\"https://github.com/TheIdentitySelector/thiss-mdq/issues\\\"\\n  },\\n  \\\"scripts\\\": {\\n    \\\"snyk-protect\\\": \\\"snyk-protect\\\",\\n    \\\"snyk-test\\\": \\\"snyk test\\\",\\n    \\\"prepare\\\": \\\"npm run snyk-protect\\\",\\n    \\\"start\\\": \\\"node index.js\\\",\\n    \\\"test\\\": \\\"./node_modules/.bin/nyc --reporter=lcov -- ./node_modules/mocha/bin/_mocha --require @babel/register\\\"\\n  },\\n  \\\"author\\\": \\\"Leif Johansson <leifj@sunet.se>\\\",\\n  \\\"license\\\": \\\"BSD-2-Clause\\\",\\n  \\\"devDependencies\\\": {\\n    \\\"@babel/cli\\\": \\\"^7.25.6\\\",\\n    \\\"@babel/core\\\": \\\"^7.25.2\\\",\\n    \\\"@babel/preset-env\\\": \\\"^7.25.4\\\",\\n    \\\"@babel/register\\\": \\\"^7.24.6\\\",\\n    \\\"@snyk/protect\\\": \\\"^1.1293.0\\\",\\n    \\\"@types/chai\\\": \\\"^4.3.19\\\",\\n    \\\"@types/chai-http\\\": \\\"^4.2.0\\\",\\n    \\\"chai\\\": \\\"^5.1.1\\\",\\n    \\\"chai-http\\\": \\\"^5.0.0\\\",\\n    \\\"grunt\\\": \\\"^1.6.1\\\",\\n    \\\"grunt-cli\\\": \\\"^1.5.0\\\",\\n    \\\"mocha\\\": \\\"^10.7.3\\\",\\n    \\\"nyc\\\": \\\"^17.0.0\\\",\\n    \\\"regenerator-runtime\\\": \\\"^0.14.1\\\",\\n    \\\"snyk\\\": \\\"^1.1293.0\\\"\\n  },\\n  \\\"dependencies\\\": {\\n    \\\"compression\\\": \\\"^1.7.4\\\",\\n    \\\"core-js\\\": \\\"^3.38.1\\\",\\n    \\\"cors\\\": \\\"^2.8.5\\\",\\n    \\\"express\\\": \\\"^4.21.0\\\",\\n    \\\"fuse.js\\\": \\\"^7.0.0\\\",\\n    \\\"lunr\\\": \\\"^2.3.9\\\",\\n    \\\"redis\\\": \\\"^4.7.0\\\",\\n    \\\"stopword\\\": \\\"^3.1.1\\\",\\n    \\\"stream\\\": \\\"0.0.3\\\",\\n    \\\"stream-chain\\\": \\\"^3.1.0\\\",\\n    \\\"stream-json\\\": \\\"^1.8.0\\\"\\n  }\\n}\\n\",\"content_hash\":null,\"content_normalized\":null,\"matcher\":{\"name\":\"npmbower\",\"confidence\":90},\"matched_license\":\"BSD-2-Clause\",\"attribution\":null}]}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/thiss-mdq.assess.sqaaas/job/master/1/execution/node/79/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/thiss-mdq.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "licenses": [
+                                    {
+                                        "key": "bsd-3-clause",
+                                        "spdx_id": "BSD-3-Clause",
+                                        "meta": {
+                                            "title": "BSD 3-Clause \"New\" or \"Revised\" License",
+                                            "source": "https://spdx.org/licenses/BSD-3-Clause.html",
+                                            "description": "A permissive license similar to the <a href=\"/licenses/bsd-2-clause/\">BSD 2-Clause License</a>, but with a 3rd clause that prohibits others from using the name of the copyright holder or its contributors to promote derived products without written consent.",
+                                            "how": "Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.",
+                                            "using": {
+                                                "Flutter": "https://github.com/flutter/flutter/blob/master/LICENSE",
+                                                "LevelDB": "https://github.com/google/leveldb/blob/master/LICENSE",
+                                                "Quill": "https://github.com/quilljs/quill/blob/develop/LICENSE"
+                                            },
+                                            "featured": false,
+                                            "hidden": false,
+                                            "nickname": "Modified BSD License",
+                                            "note": null
+                                        },
+                                        "url": "http://choosealicense.com/licenses/bsd-3-clause/",
+                                        "rules": {
+                                            "permissions": [
+                                                {
+                                                    "tag": "commercial-use",
+                                                    "label": "Commercial use",
+                                                    "description": "The licensed material and derivatives may be used for commercial purposes."
+                                                },
+                                                {
+                                                    "tag": "modifications",
+                                                    "label": "Modification",
+                                                    "description": "The licensed material may be modified."
+                                                },
+                                                {
+                                                    "tag": "distribution",
+                                                    "label": "Distribution",
+                                                    "description": "The licensed material may be distributed."
+                                                },
+                                                {
+                                                    "tag": "private-use",
+                                                    "label": "Private use",
+                                                    "description": "The licensed material may be used and modified in private."
+                                                }
+                                            ],
+                                            "conditions": [
+                                                {
+                                                    "tag": "include-copyright",
+                                                    "label": "License and copyright notice",
+                                                    "description": "A copy of the license and copyright notice must be included with the licensed material."
+                                                }
+                                            ],
+                                            "limitations": [
+                                                {
+                                                    "tag": "liability",
+                                                    "label": "Liability",
+                                                    "description": "This license includes a limitation of liability."
+                                                },
+                                                {
+                                                    "tag": "warranty",
+                                                    "label": "Warranty",
+                                                    "description": "This license explicitly states that it does NOT provide any warranty."
+                                                }
+                                            ]
+                                        },
+                                        "fields": [
+                                            {
+                                                "name": "year",
+                                                "description": "The current year"
+                                            },
+                                            {
+                                                "name": "fullname",
+                                                "description": "The full name or username of the repository owner"
+                                            }
+                                        ],
+                                        "other": false,
+                                        "gpl": false,
+                                        "lgpl": false,
+                                        "cc": false
+                                    },
+                                    {
+                                        "key": "bsd-2-clause",
+                                        "spdx_id": "BSD-2-Clause",
+                                        "meta": {
+                                            "title": "BSD 2-Clause \"Simplified\" License",
+                                            "source": "https://spdx.org/licenses/BSD-2-Clause.html",
+                                            "description": "A permissive license that comes in two variants, the <a href=\"/licenses/bsd-2-clause/\">BSD 2-Clause</a> and <a href=\"/licenses/bsd-3-clause/\">BSD 3-Clause</a>. Both have very minute differences to the MIT license.",
+                                            "how": "Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.",
+                                            "using": {
+                                                "go-redis": "https://github.com/go-redis/redis/blob/master/LICENSE",
+                                                "Homebrew": "https://github.com/Homebrew/brew/blob/master/LICENSE.txt",
+                                                "Pony": "https://github.com/ponylang/ponyc/blob/master/LICENSE"
+                                            },
+                                            "featured": false,
+                                            "hidden": false,
+                                            "nickname": null,
+                                            "note": null
+                                        },
+                                        "url": "http://choosealicense.com/licenses/bsd-2-clause/",
+                                        "rules": {
+                                            "permissions": [
+                                                {
+                                                    "tag": "commercial-use",
+                                                    "label": "Commercial use",
+                                                    "description": "The licensed material and derivatives may be used for commercial purposes."
+                                                },
+                                                {
+                                                    "tag": "modifications",
+                                                    "label": "Modification",
+                                                    "description": "The licensed material may be modified."
+                                                },
+                                                {
+                                                    "tag": "distribution",
+                                                    "label": "Distribution",
+                                                    "description": "The licensed material may be distributed."
+                                                },
+                                                {
+                                                    "tag": "private-use",
+                                                    "label": "Private use",
+                                                    "description": "The licensed material may be used and modified in private."
+                                                }
+                                            ],
+                                            "conditions": [
+                                                {
+                                                    "tag": "include-copyright",
+                                                    "label": "License and copyright notice",
+                                                    "description": "A copy of the license and copyright notice must be included with the licensed material."
+                                                }
+                                            ],
+                                            "limitations": [
+                                                {
+                                                    "tag": "liability",
+                                                    "label": "Liability",
+                                                    "description": "This license includes a limitation of liability."
+                                                },
+                                                {
+                                                    "tag": "warranty",
+                                                    "label": "Warranty",
+                                                    "description": "This license explicitly states that it does NOT provide any warranty."
+                                                }
+                                            ]
+                                        },
+                                        "fields": [
+                                            {
+                                                "name": "year",
+                                                "description": "The current year"
+                                            },
+                                            {
+                                                "name": "fullname",
+                                                "description": "The full name or username of the repository owner"
+                                            }
+                                        ],
+                                        "other": false,
+                                        "gpl": false,
+                                        "lgpl": false,
+                                        "cc": false
+                                    }
+                                ],
+                                "matched_files": [
+                                    {
+                                        "filename": "LICENSE.txt",
+                                        "content": "Copyright 2018-2019 SUNET. All rights reserved.\n\nRedistribution and use in source and binary forms, with or without modification, are\npermitted provided that the following conditions are met:\n\n   1. Redistributions of source code must retain the above copyright notice, this list of\n      conditions and the following disclaimer.\n\n   2. Redistributions in binary form must reproduce the above copyright notice, this list\n      of conditions and the following disclaimer in the documentation and/or other materials\n      provided with the distribution.\n\nTHIS SOFTWARE IS PROVIDED BY SUNET ``AS IS'' AND ANY EXPRESS OR IMPLIED\nWARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND\nFITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL SUNET OR\nCONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR\nCONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON\nANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING\nNEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF\nADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n\nThe views and conclusions contained in the software and documentation are those of the\nauthors and should not be interpreted as representing official policies, either expressed\nor implied, of SUNET.\n",
+                                        "content_hash": "84f3cc8e44aac51a7e27cff87324242b9a17df8c",
+                                        "content_normalized": "redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: - redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. - redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. this software is provided by sunet ''as is'' and any express or implied warranties, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose are disclaimed. in no event shall sunet or contributors be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of this software, even if advised of the possibility of such damage. the views and conclusions contained in the software and documentation are those of the authors and should not be interpreted as representing official policies, either expressed or implied, of sunet.",
+                                        "matcher": {
+                                            "name": "dice",
+                                            "confidence": 86.69527896995709
+                                        },
+                                        "matched_license": "BSD-3-Clause",
+                                        "attribution": "Copyright 2018-2019 SUNET. All rights reserved."
+                                    },
+                                    {
+                                        "filename": "package.json",
+                                        "content": "{\n  \"name\": \"thiss-mdq\",\n  \"version\": \"1.5.0b6\",\n  \"description\": \"A minimal JSON-only MDQ\",\n  \"main\": \"index.js\",\n  \"homepage\": \"https://github.com/TheIdentitySelector/thiss-mdq\",\n  \"type\": \"module\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/TheIdentitySelector/thiss-mdq\"\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/TheIdentitySelector/thiss-mdq/issues\"\n  },\n  \"scripts\": {\n    \"snyk-protect\": \"snyk-protect\",\n    \"snyk-test\": \"snyk test\",\n    \"prepare\": \"npm run snyk-protect\",\n    \"start\": \"node index.js\",\n    \"test\": \"./node_modules/.bin/nyc --reporter=lcov -- ./node_modules/mocha/bin/_mocha --require @babel/register\"\n  },\n  \"author\": \"Leif Johansson <leifj@sunet.se>\",\n  \"license\": \"BSD-2-Clause\",\n  \"devDependencies\": {\n    \"@babel/cli\": \"^7.25.6\",\n    \"@babel/core\": \"^7.25.2\",\n    \"@babel/preset-env\": \"^7.25.4\",\n    \"@babel/register\": \"^7.24.6\",\n    \"@snyk/protect\": \"^1.1293.0\",\n    \"@types/chai\": \"^4.3.19\",\n    \"@types/chai-http\": \"^4.2.0\",\n    \"chai\": \"^5.1.1\",\n    \"chai-http\": \"^5.0.0\",\n    \"grunt\": \"^1.6.1\",\n    \"grunt-cli\": \"^1.5.0\",\n    \"mocha\": \"^10.7.3\",\n    \"nyc\": \"^17.0.0\",\n    \"regenerator-runtime\": \"^0.14.1\",\n    \"snyk\": \"^1.1293.0\"\n  },\n  \"dependencies\": {\n    \"compression\": \"^1.7.4\",\n    \"core-js\": \"^3.38.1\",\n    \"cors\": \"^2.8.5\",\n    \"express\": \"^4.21.0\",\n    \"fuse.js\": \"^7.0.0\",\n    \"lunr\": \"^2.3.9\",\n    \"redis\": \"^4.7.0\",\n    \"stopword\": \"^3.1.1\",\n    \"stream\": \"0.0.3\",\n    \"stream-chain\": \"^3.1.0\",\n    \"stream-json\": \"^1.8.0\"\n  }\n}\n",
+                                        "content_hash": null,
+                                        "content_normalized": null,
+                                        "matcher": {
+                                            "name": "npmbower",
+                                            "confidence": 90
+                                        },
+                                        "matched_license": "BSD-2-Clause",
+                                        "attribution": null
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "valid": true
+                },
+                "QC.Lic01.1": {
+                    "description": "Is LICENSE file placed in the root path of the code repository?",
+                    "requirement_level": "MUST",
+                    "hint": "Most social coding platforms require the license file to placed in the root path of the code repository, so it is a good practice to use this location by default. Allowed file names are <code>LICENSE</code>, <code>LICENSE.md</code>, <code>LICENSE.rst</code>, <code>LICENSE.txt</code>",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "LICENSE file is visible at the root path of the code repository: LICENSE.txt",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-licensee",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "licensee",
+                                "lang": "license",
+                                "version": "9.17.0",
+                                "docker": {
+                                    "image": "eoscsynergy/sqaaas-licensee:9.17.0",
+                                    "reviewed": "2021-06-28"
+                                },
+                                "ci": {
+                                    "name": "QC.Lic github.com/TheIdentitySelector/thiss-mdq licensee",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "licensee detect . --confidence 60 --json"
+                                    ],
+                                    "stdout_text": "{\"licenses\":[{\"key\":\"bsd-3-clause\",\"spdx_id\":\"BSD-3-Clause\",\"meta\":{\"title\":\"BSD 3-Clause \\\"New\\\" or \\\"Revised\\\" License\",\"source\":\"https://spdx.org/licenses/BSD-3-Clause.html\",\"description\":\"A permissive license similar to the <a href=\\\"/licenses/bsd-2-clause/\\\">BSD 2-Clause License</a>, but with a 3rd clause that prohibits others from using the name of the copyright holder or its contributors to promote derived products without written consent.\",\"how\":\"Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.\",\"using\":{\"Flutter\":\"https://github.com/flutter/flutter/blob/master/LICENSE\",\"LevelDB\":\"https://github.com/google/leveldb/blob/master/LICENSE\",\"Quill\":\"https://github.com/quilljs/quill/blob/develop/LICENSE\"},\"featured\":false,\"hidden\":false,\"nickname\":\"Modified BSD License\",\"note\":null},\"url\":\"http://choosealicense.com/licenses/bsd-3-clause/\",\"rules\":{\"permissions\":[{\"tag\":\"commercial-use\",\"label\":\"Commercial use\",\"description\":\"The licensed material and derivatives may be used for commercial purposes.\"},{\"tag\":\"modifications\",\"label\":\"Modification\",\"description\":\"The licensed material may be modified.\"},{\"tag\":\"distribution\",\"label\":\"Distribution\",\"description\":\"The licensed material may be distributed.\"},{\"tag\":\"private-use\",\"label\":\"Private use\",\"description\":\"The licensed material may be used and modified in private.\"}],\"conditions\":[{\"tag\":\"include-copyright\",\"label\":\"License and copyright notice\",\"description\":\"A copy of the license and copyright notice must be included with the licensed material.\"}],\"limitations\":[{\"tag\":\"liability\",\"label\":\"Liability\",\"description\":\"This license includes a limitation of liability.\"},{\"tag\":\"warranty\",\"label\":\"Warranty\",\"description\":\"This license explicitly states that it does NOT provide any warranty.\"}]},\"fields\":[{\"name\":\"year\",\"description\":\"The current year\"},{\"name\":\"fullname\",\"description\":\"The full name or username of the repository owner\"}],\"other\":false,\"gpl\":false,\"lgpl\":false,\"cc\":false},{\"key\":\"bsd-2-clause\",\"spdx_id\":\"BSD-2-Clause\",\"meta\":{\"title\":\"BSD 2-Clause \\\"Simplified\\\" License\",\"source\":\"https://spdx.org/licenses/BSD-2-Clause.html\",\"description\":\"A permissive license that comes in two variants, the <a href=\\\"/licenses/bsd-2-clause/\\\">BSD 2-Clause</a> and <a href=\\\"/licenses/bsd-3-clause/\\\">BSD 3-Clause</a>. Both have very minute differences to the MIT license.\",\"how\":\"Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.\",\"using\":{\"go-redis\":\"https://github.com/go-redis/redis/blob/master/LICENSE\",\"Homebrew\":\"https://github.com/Homebrew/brew/blob/master/LICENSE.txt\",\"Pony\":\"https://github.com/ponylang/ponyc/blob/master/LICENSE\"},\"featured\":false,\"hidden\":false,\"nickname\":null,\"note\":null},\"url\":\"http://choosealicense.com/licenses/bsd-2-clause/\",\"rules\":{\"permissions\":[{\"tag\":\"commercial-use\",\"label\":\"Commercial use\",\"description\":\"The licensed material and derivatives may be used for commercial purposes.\"},{\"tag\":\"modifications\",\"label\":\"Modification\",\"description\":\"The licensed material may be modified.\"},{\"tag\":\"distribution\",\"label\":\"Distribution\",\"description\":\"The licensed material may be distributed.\"},{\"tag\":\"private-use\",\"label\":\"Private use\",\"description\":\"The licensed material may be used and modified in private.\"}],\"conditions\":[{\"tag\":\"include-copyright\",\"label\":\"License and copyright notice\",\"description\":\"A copy of the license and copyright notice must be included with the licensed material.\"}],\"limitations\":[{\"tag\":\"liability\",\"label\":\"Liability\",\"description\":\"This license includes a limitation of liability.\"},{\"tag\":\"warranty\",\"label\":\"Warranty\",\"description\":\"This license explicitly states that it does NOT provide any warranty.\"}]},\"fields\":[{\"name\":\"year\",\"description\":\"The current year\"},{\"name\":\"fullname\",\"description\":\"The full name or username of the repository owner\"}],\"other\":false,\"gpl\":false,\"lgpl\":false,\"cc\":false}],\"matched_files\":[{\"filename\":\"LICENSE.txt\",\"content\":\"Copyright 2018-2019 SUNET. All rights reserved.\\n\\nRedistribution and use in source and binary forms, with or without modification, are\\npermitted provided that the following conditions are met:\\n\\n   1. Redistributions of source code must retain the above copyright notice, this list of\\n      conditions and the following disclaimer.\\n\\n   2. Redistributions in binary form must reproduce the above copyright notice, this list\\n      of conditions and the following disclaimer in the documentation and/or other materials\\n      provided with the distribution.\\n\\nTHIS SOFTWARE IS PROVIDED BY SUNET ``AS IS'' AND ANY EXPRESS OR IMPLIED\\nWARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND\\nFITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL SUNET OR\\nCONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR\\nCONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON\\nANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING\\nNEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF\\nADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\\n\\nThe views and conclusions contained in the software and documentation are those of the\\nauthors and should not be interpreted as representing official policies, either expressed\\nor implied, of SUNET.\\n\",\"content_hash\":\"84f3cc8e44aac51a7e27cff87324242b9a17df8c\",\"content_normalized\":\"redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: - redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. - redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. this software is provided by sunet ''as is'' and any express or implied warranties, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose are disclaimed. in no event shall sunet or contributors be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of this software, even if advised of the possibility of such damage. the views and conclusions contained in the software and documentation are those of the authors and should not be interpreted as representing official policies, either expressed or implied, of sunet.\",\"matcher\":{\"name\":\"dice\",\"confidence\":86.69527896995709},\"matched_license\":\"BSD-3-Clause\",\"attribution\":\"Copyright 2018-2019 SUNET. All rights reserved.\"},{\"filename\":\"package.json\",\"content\":\"{\\n  \\\"name\\\": \\\"thiss-mdq\\\",\\n  \\\"version\\\": \\\"1.5.0b6\\\",\\n  \\\"description\\\": \\\"A minimal JSON-only MDQ\\\",\\n  \\\"main\\\": \\\"index.js\\\",\\n  \\\"homepage\\\": \\\"https://github.com/TheIdentitySelector/thiss-mdq\\\",\\n  \\\"type\\\": \\\"module\\\",\\n  \\\"repository\\\": {\\n    \\\"type\\\": \\\"git\\\",\\n    \\\"url\\\": \\\"https://github.com/TheIdentitySelector/thiss-mdq\\\"\\n  },\\n  \\\"bugs\\\": {\\n    \\\"url\\\": \\\"https://github.com/TheIdentitySelector/thiss-mdq/issues\\\"\\n  },\\n  \\\"scripts\\\": {\\n    \\\"snyk-protect\\\": \\\"snyk-protect\\\",\\n    \\\"snyk-test\\\": \\\"snyk test\\\",\\n    \\\"prepare\\\": \\\"npm run snyk-protect\\\",\\n    \\\"start\\\": \\\"node index.js\\\",\\n    \\\"test\\\": \\\"./node_modules/.bin/nyc --reporter=lcov -- ./node_modules/mocha/bin/_mocha --require @babel/register\\\"\\n  },\\n  \\\"author\\\": \\\"Leif Johansson <leifj@sunet.se>\\\",\\n  \\\"license\\\": \\\"BSD-2-Clause\\\",\\n  \\\"devDependencies\\\": {\\n    \\\"@babel/cli\\\": \\\"^7.25.6\\\",\\n    \\\"@babel/core\\\": \\\"^7.25.2\\\",\\n    \\\"@babel/preset-env\\\": \\\"^7.25.4\\\",\\n    \\\"@babel/register\\\": \\\"^7.24.6\\\",\\n    \\\"@snyk/protect\\\": \\\"^1.1293.0\\\",\\n    \\\"@types/chai\\\": \\\"^4.3.19\\\",\\n    \\\"@types/chai-http\\\": \\\"^4.2.0\\\",\\n    \\\"chai\\\": \\\"^5.1.1\\\",\\n    \\\"chai-http\\\": \\\"^5.0.0\\\",\\n    \\\"grunt\\\": \\\"^1.6.1\\\",\\n    \\\"grunt-cli\\\": \\\"^1.5.0\\\",\\n    \\\"mocha\\\": \\\"^10.7.3\\\",\\n    \\\"nyc\\\": \\\"^17.0.0\\\",\\n    \\\"regenerator-runtime\\\": \\\"^0.14.1\\\",\\n    \\\"snyk\\\": \\\"^1.1293.0\\\"\\n  },\\n  \\\"dependencies\\\": {\\n    \\\"compression\\\": \\\"^1.7.4\\\",\\n    \\\"core-js\\\": \\\"^3.38.1\\\",\\n    \\\"cors\\\": \\\"^2.8.5\\\",\\n    \\\"express\\\": \\\"^4.21.0\\\",\\n    \\\"fuse.js\\\": \\\"^7.0.0\\\",\\n    \\\"lunr\\\": \\\"^2.3.9\\\",\\n    \\\"redis\\\": \\\"^4.7.0\\\",\\n    \\\"stopword\\\": \\\"^3.1.1\\\",\\n    \\\"stream\\\": \\\"0.0.3\\\",\\n    \\\"stream-chain\\\": \\\"^3.1.0\\\",\\n    \\\"stream-json\\\": \\\"^1.8.0\\\"\\n  }\\n}\\n\",\"content_hash\":null,\"content_normalized\":null,\"matcher\":{\"name\":\"npmbower\",\"confidence\":90},\"matched_license\":\"BSD-2-Clause\",\"attribution\":null}]}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/thiss-mdq.assess.sqaaas/job/master/1/execution/node/79/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/thiss-mdq.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "licenses": [
+                                    {
+                                        "key": "bsd-3-clause",
+                                        "spdx_id": "BSD-3-Clause",
+                                        "meta": {
+                                            "title": "BSD 3-Clause \"New\" or \"Revised\" License",
+                                            "source": "https://spdx.org/licenses/BSD-3-Clause.html",
+                                            "description": "A permissive license similar to the <a href=\"/licenses/bsd-2-clause/\">BSD 2-Clause License</a>, but with a 3rd clause that prohibits others from using the name of the copyright holder or its contributors to promote derived products without written consent.",
+                                            "how": "Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.",
+                                            "using": {
+                                                "Flutter": "https://github.com/flutter/flutter/blob/master/LICENSE",
+                                                "LevelDB": "https://github.com/google/leveldb/blob/master/LICENSE",
+                                                "Quill": "https://github.com/quilljs/quill/blob/develop/LICENSE"
+                                            },
+                                            "featured": false,
+                                            "hidden": false,
+                                            "nickname": "Modified BSD License",
+                                            "note": null
+                                        },
+                                        "url": "http://choosealicense.com/licenses/bsd-3-clause/",
+                                        "rules": {
+                                            "permissions": [
+                                                {
+                                                    "tag": "commercial-use",
+                                                    "label": "Commercial use",
+                                                    "description": "The licensed material and derivatives may be used for commercial purposes."
+                                                },
+                                                {
+                                                    "tag": "modifications",
+                                                    "label": "Modification",
+                                                    "description": "The licensed material may be modified."
+                                                },
+                                                {
+                                                    "tag": "distribution",
+                                                    "label": "Distribution",
+                                                    "description": "The licensed material may be distributed."
+                                                },
+                                                {
+                                                    "tag": "private-use",
+                                                    "label": "Private use",
+                                                    "description": "The licensed material may be used and modified in private."
+                                                }
+                                            ],
+                                            "conditions": [
+                                                {
+                                                    "tag": "include-copyright",
+                                                    "label": "License and copyright notice",
+                                                    "description": "A copy of the license and copyright notice must be included with the licensed material."
+                                                }
+                                            ],
+                                            "limitations": [
+                                                {
+                                                    "tag": "liability",
+                                                    "label": "Liability",
+                                                    "description": "This license includes a limitation of liability."
+                                                },
+                                                {
+                                                    "tag": "warranty",
+                                                    "label": "Warranty",
+                                                    "description": "This license explicitly states that it does NOT provide any warranty."
+                                                }
+                                            ]
+                                        },
+                                        "fields": [
+                                            {
+                                                "name": "year",
+                                                "description": "The current year"
+                                            },
+                                            {
+                                                "name": "fullname",
+                                                "description": "The full name or username of the repository owner"
+                                            }
+                                        ],
+                                        "other": false,
+                                        "gpl": false,
+                                        "lgpl": false,
+                                        "cc": false
+                                    },
+                                    {
+                                        "key": "bsd-2-clause",
+                                        "spdx_id": "BSD-2-Clause",
+                                        "meta": {
+                                            "title": "BSD 2-Clause \"Simplified\" License",
+                                            "source": "https://spdx.org/licenses/BSD-2-Clause.html",
+                                            "description": "A permissive license that comes in two variants, the <a href=\"/licenses/bsd-2-clause/\">BSD 2-Clause</a> and <a href=\"/licenses/bsd-3-clause/\">BSD 3-Clause</a>. Both have very minute differences to the MIT license.",
+                                            "how": "Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.",
+                                            "using": {
+                                                "go-redis": "https://github.com/go-redis/redis/blob/master/LICENSE",
+                                                "Homebrew": "https://github.com/Homebrew/brew/blob/master/LICENSE.txt",
+                                                "Pony": "https://github.com/ponylang/ponyc/blob/master/LICENSE"
+                                            },
+                                            "featured": false,
+                                            "hidden": false,
+                                            "nickname": null,
+                                            "note": null
+                                        },
+                                        "url": "http://choosealicense.com/licenses/bsd-2-clause/",
+                                        "rules": {
+                                            "permissions": [
+                                                {
+                                                    "tag": "commercial-use",
+                                                    "label": "Commercial use",
+                                                    "description": "The licensed material and derivatives may be used for commercial purposes."
+                                                },
+                                                {
+                                                    "tag": "modifications",
+                                                    "label": "Modification",
+                                                    "description": "The licensed material may be modified."
+                                                },
+                                                {
+                                                    "tag": "distribution",
+                                                    "label": "Distribution",
+                                                    "description": "The licensed material may be distributed."
+                                                },
+                                                {
+                                                    "tag": "private-use",
+                                                    "label": "Private use",
+                                                    "description": "The licensed material may be used and modified in private."
+                                                }
+                                            ],
+                                            "conditions": [
+                                                {
+                                                    "tag": "include-copyright",
+                                                    "label": "License and copyright notice",
+                                                    "description": "A copy of the license and copyright notice must be included with the licensed material."
+                                                }
+                                            ],
+                                            "limitations": [
+                                                {
+                                                    "tag": "liability",
+                                                    "label": "Liability",
+                                                    "description": "This license includes a limitation of liability."
+                                                },
+                                                {
+                                                    "tag": "warranty",
+                                                    "label": "Warranty",
+                                                    "description": "This license explicitly states that it does NOT provide any warranty."
+                                                }
+                                            ]
+                                        },
+                                        "fields": [
+                                            {
+                                                "name": "year",
+                                                "description": "The current year"
+                                            },
+                                            {
+                                                "name": "fullname",
+                                                "description": "The full name or username of the repository owner"
+                                            }
+                                        ],
+                                        "other": false,
+                                        "gpl": false,
+                                        "lgpl": false,
+                                        "cc": false
+                                    }
+                                ],
+                                "matched_files": [
+                                    {
+                                        "filename": "LICENSE.txt",
+                                        "content": "Copyright 2018-2019 SUNET. All rights reserved.\n\nRedistribution and use in source and binary forms, with or without modification, are\npermitted provided that the following conditions are met:\n\n   1. Redistributions of source code must retain the above copyright notice, this list of\n      conditions and the following disclaimer.\n\n   2. Redistributions in binary form must reproduce the above copyright notice, this list\n      of conditions and the following disclaimer in the documentation and/or other materials\n      provided with the distribution.\n\nTHIS SOFTWARE IS PROVIDED BY SUNET ``AS IS'' AND ANY EXPRESS OR IMPLIED\nWARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND\nFITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL SUNET OR\nCONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR\nCONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON\nANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING\nNEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF\nADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n\nThe views and conclusions contained in the software and documentation are those of the\nauthors and should not be interpreted as representing official policies, either expressed\nor implied, of SUNET.\n",
+                                        "content_hash": "84f3cc8e44aac51a7e27cff87324242b9a17df8c",
+                                        "content_normalized": "redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: - redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. - redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. this software is provided by sunet ''as is'' and any express or implied warranties, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose are disclaimed. in no event shall sunet or contributors be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of this software, even if advised of the possibility of such damage. the views and conclusions contained in the software and documentation are those of the authors and should not be interpreted as representing official policies, either expressed or implied, of sunet.",
+                                        "matcher": {
+                                            "name": "dice",
+                                            "confidence": 86.69527896995709
+                                        },
+                                        "matched_license": "BSD-3-Clause",
+                                        "attribution": "Copyright 2018-2019 SUNET. All rights reserved."
+                                    },
+                                    {
+                                        "filename": "package.json",
+                                        "content": "{\n  \"name\": \"thiss-mdq\",\n  \"version\": \"1.5.0b6\",\n  \"description\": \"A minimal JSON-only MDQ\",\n  \"main\": \"index.js\",\n  \"homepage\": \"https://github.com/TheIdentitySelector/thiss-mdq\",\n  \"type\": \"module\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/TheIdentitySelector/thiss-mdq\"\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/TheIdentitySelector/thiss-mdq/issues\"\n  },\n  \"scripts\": {\n    \"snyk-protect\": \"snyk-protect\",\n    \"snyk-test\": \"snyk test\",\n    \"prepare\": \"npm run snyk-protect\",\n    \"start\": \"node index.js\",\n    \"test\": \"./node_modules/.bin/nyc --reporter=lcov -- ./node_modules/mocha/bin/_mocha --require @babel/register\"\n  },\n  \"author\": \"Leif Johansson <leifj@sunet.se>\",\n  \"license\": \"BSD-2-Clause\",\n  \"devDependencies\": {\n    \"@babel/cli\": \"^7.25.6\",\n    \"@babel/core\": \"^7.25.2\",\n    \"@babel/preset-env\": \"^7.25.4\",\n    \"@babel/register\": \"^7.24.6\",\n    \"@snyk/protect\": \"^1.1293.0\",\n    \"@types/chai\": \"^4.3.19\",\n    \"@types/chai-http\": \"^4.2.0\",\n    \"chai\": \"^5.1.1\",\n    \"chai-http\": \"^5.0.0\",\n    \"grunt\": \"^1.6.1\",\n    \"grunt-cli\": \"^1.5.0\",\n    \"mocha\": \"^10.7.3\",\n    \"nyc\": \"^17.0.0\",\n    \"regenerator-runtime\": \"^0.14.1\",\n    \"snyk\": \"^1.1293.0\"\n  },\n  \"dependencies\": {\n    \"compression\": \"^1.7.4\",\n    \"core-js\": \"^3.38.1\",\n    \"cors\": \"^2.8.5\",\n    \"express\": \"^4.21.0\",\n    \"fuse.js\": \"^7.0.0\",\n    \"lunr\": \"^2.3.9\",\n    \"redis\": \"^4.7.0\",\n    \"stopword\": \"^3.1.1\",\n    \"stream\": \"0.0.3\",\n    \"stream-chain\": \"^3.1.0\",\n    \"stream-json\": \"^1.8.0\"\n  }\n}\n",
+                                        "content_hash": null,
+                                        "content_normalized": null,
+                                        "matcher": {
+                                            "name": "npmbower",
+                                            "confidence": 90
+                                        },
+                                        "matched_license": "BSD-2-Clause",
+                                        "attribution": null
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "valid": true
+                },
+                "QC.Lic02": {
+                    "description": "Does the code use a license approved by Open Source Initiative?",
+                    "requirement_level": "MUST",
+                    "hint": "The <a href=\"https://opensource.org/\" target=\"_blank\">Open Source Initiative (OSI)</a> sets out the requirements for software to be legally declared as Open Source. The license in use shall be in the list of <a href=\"https://opensource.org/license-list.html\" target=\"_blank\">OSI-approved licenses</a> for this criterion to be successful",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "License BSD-3-Clause is approved by the Open Source Initiative",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-licensee",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "licensee",
+                                "lang": "license",
+                                "version": "9.17.0",
+                                "docker": {
+                                    "image": "eoscsynergy/sqaaas-licensee:9.17.0",
+                                    "reviewed": "2021-06-28"
+                                },
+                                "ci": {
+                                    "name": "QC.Lic github.com/TheIdentitySelector/thiss-mdq licensee",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "licensee detect . --confidence 60 --json"
+                                    ],
+                                    "stdout_text": "{\"licenses\":[{\"key\":\"bsd-3-clause\",\"spdx_id\":\"BSD-3-Clause\",\"meta\":{\"title\":\"BSD 3-Clause \\\"New\\\" or \\\"Revised\\\" License\",\"source\":\"https://spdx.org/licenses/BSD-3-Clause.html\",\"description\":\"A permissive license similar to the <a href=\\\"/licenses/bsd-2-clause/\\\">BSD 2-Clause License</a>, but with a 3rd clause that prohibits others from using the name of the copyright holder or its contributors to promote derived products without written consent.\",\"how\":\"Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.\",\"using\":{\"Flutter\":\"https://github.com/flutter/flutter/blob/master/LICENSE\",\"LevelDB\":\"https://github.com/google/leveldb/blob/master/LICENSE\",\"Quill\":\"https://github.com/quilljs/quill/blob/develop/LICENSE\"},\"featured\":false,\"hidden\":false,\"nickname\":\"Modified BSD License\",\"note\":null},\"url\":\"http://choosealicense.com/licenses/bsd-3-clause/\",\"rules\":{\"permissions\":[{\"tag\":\"commercial-use\",\"label\":\"Commercial use\",\"description\":\"The licensed material and derivatives may be used for commercial purposes.\"},{\"tag\":\"modifications\",\"label\":\"Modification\",\"description\":\"The licensed material may be modified.\"},{\"tag\":\"distribution\",\"label\":\"Distribution\",\"description\":\"The licensed material may be distributed.\"},{\"tag\":\"private-use\",\"label\":\"Private use\",\"description\":\"The licensed material may be used and modified in private.\"}],\"conditions\":[{\"tag\":\"include-copyright\",\"label\":\"License and copyright notice\",\"description\":\"A copy of the license and copyright notice must be included with the licensed material.\"}],\"limitations\":[{\"tag\":\"liability\",\"label\":\"Liability\",\"description\":\"This license includes a limitation of liability.\"},{\"tag\":\"warranty\",\"label\":\"Warranty\",\"description\":\"This license explicitly states that it does NOT provide any warranty.\"}]},\"fields\":[{\"name\":\"year\",\"description\":\"The current year\"},{\"name\":\"fullname\",\"description\":\"The full name or username of the repository owner\"}],\"other\":false,\"gpl\":false,\"lgpl\":false,\"cc\":false},{\"key\":\"bsd-2-clause\",\"spdx_id\":\"BSD-2-Clause\",\"meta\":{\"title\":\"BSD 2-Clause \\\"Simplified\\\" License\",\"source\":\"https://spdx.org/licenses/BSD-2-Clause.html\",\"description\":\"A permissive license that comes in two variants, the <a href=\\\"/licenses/bsd-2-clause/\\\">BSD 2-Clause</a> and <a href=\\\"/licenses/bsd-3-clause/\\\">BSD 3-Clause</a>. Both have very minute differences to the MIT license.\",\"how\":\"Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.\",\"using\":{\"go-redis\":\"https://github.com/go-redis/redis/blob/master/LICENSE\",\"Homebrew\":\"https://github.com/Homebrew/brew/blob/master/LICENSE.txt\",\"Pony\":\"https://github.com/ponylang/ponyc/blob/master/LICENSE\"},\"featured\":false,\"hidden\":false,\"nickname\":null,\"note\":null},\"url\":\"http://choosealicense.com/licenses/bsd-2-clause/\",\"rules\":{\"permissions\":[{\"tag\":\"commercial-use\",\"label\":\"Commercial use\",\"description\":\"The licensed material and derivatives may be used for commercial purposes.\"},{\"tag\":\"modifications\",\"label\":\"Modification\",\"description\":\"The licensed material may be modified.\"},{\"tag\":\"distribution\",\"label\":\"Distribution\",\"description\":\"The licensed material may be distributed.\"},{\"tag\":\"private-use\",\"label\":\"Private use\",\"description\":\"The licensed material may be used and modified in private.\"}],\"conditions\":[{\"tag\":\"include-copyright\",\"label\":\"License and copyright notice\",\"description\":\"A copy of the license and copyright notice must be included with the licensed material.\"}],\"limitations\":[{\"tag\":\"liability\",\"label\":\"Liability\",\"description\":\"This license includes a limitation of liability.\"},{\"tag\":\"warranty\",\"label\":\"Warranty\",\"description\":\"This license explicitly states that it does NOT provide any warranty.\"}]},\"fields\":[{\"name\":\"year\",\"description\":\"The current year\"},{\"name\":\"fullname\",\"description\":\"The full name or username of the repository owner\"}],\"other\":false,\"gpl\":false,\"lgpl\":false,\"cc\":false}],\"matched_files\":[{\"filename\":\"LICENSE.txt\",\"content\":\"Copyright 2018-2019 SUNET. All rights reserved.\\n\\nRedistribution and use in source and binary forms, with or without modification, are\\npermitted provided that the following conditions are met:\\n\\n   1. Redistributions of source code must retain the above copyright notice, this list of\\n      conditions and the following disclaimer.\\n\\n   2. Redistributions in binary form must reproduce the above copyright notice, this list\\n      of conditions and the following disclaimer in the documentation and/or other materials\\n      provided with the distribution.\\n\\nTHIS SOFTWARE IS PROVIDED BY SUNET ``AS IS'' AND ANY EXPRESS OR IMPLIED\\nWARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND\\nFITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL SUNET OR\\nCONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR\\nCONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON\\nANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING\\nNEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF\\nADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\\n\\nThe views and conclusions contained in the software and documentation are those of the\\nauthors and should not be interpreted as representing official policies, either expressed\\nor implied, of SUNET.\\n\",\"content_hash\":\"84f3cc8e44aac51a7e27cff87324242b9a17df8c\",\"content_normalized\":\"redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: - redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. - redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. this software is provided by sunet ''as is'' and any express or implied warranties, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose are disclaimed. in no event shall sunet or contributors be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of this software, even if advised of the possibility of such damage. the views and conclusions contained in the software and documentation are those of the authors and should not be interpreted as representing official policies, either expressed or implied, of sunet.\",\"matcher\":{\"name\":\"dice\",\"confidence\":86.69527896995709},\"matched_license\":\"BSD-3-Clause\",\"attribution\":\"Copyright 2018-2019 SUNET. All rights reserved.\"},{\"filename\":\"package.json\",\"content\":\"{\\n  \\\"name\\\": \\\"thiss-mdq\\\",\\n  \\\"version\\\": \\\"1.5.0b6\\\",\\n  \\\"description\\\": \\\"A minimal JSON-only MDQ\\\",\\n  \\\"main\\\": \\\"index.js\\\",\\n  \\\"homepage\\\": \\\"https://github.com/TheIdentitySelector/thiss-mdq\\\",\\n  \\\"type\\\": \\\"module\\\",\\n  \\\"repository\\\": {\\n    \\\"type\\\": \\\"git\\\",\\n    \\\"url\\\": \\\"https://github.com/TheIdentitySelector/thiss-mdq\\\"\\n  },\\n  \\\"bugs\\\": {\\n    \\\"url\\\": \\\"https://github.com/TheIdentitySelector/thiss-mdq/issues\\\"\\n  },\\n  \\\"scripts\\\": {\\n    \\\"snyk-protect\\\": \\\"snyk-protect\\\",\\n    \\\"snyk-test\\\": \\\"snyk test\\\",\\n    \\\"prepare\\\": \\\"npm run snyk-protect\\\",\\n    \\\"start\\\": \\\"node index.js\\\",\\n    \\\"test\\\": \\\"./node_modules/.bin/nyc --reporter=lcov -- ./node_modules/mocha/bin/_mocha --require @babel/register\\\"\\n  },\\n  \\\"author\\\": \\\"Leif Johansson <leifj@sunet.se>\\\",\\n  \\\"license\\\": \\\"BSD-2-Clause\\\",\\n  \\\"devDependencies\\\": {\\n    \\\"@babel/cli\\\": \\\"^7.25.6\\\",\\n    \\\"@babel/core\\\": \\\"^7.25.2\\\",\\n    \\\"@babel/preset-env\\\": \\\"^7.25.4\\\",\\n    \\\"@babel/register\\\": \\\"^7.24.6\\\",\\n    \\\"@snyk/protect\\\": \\\"^1.1293.0\\\",\\n    \\\"@types/chai\\\": \\\"^4.3.19\\\",\\n    \\\"@types/chai-http\\\": \\\"^4.2.0\\\",\\n    \\\"chai\\\": \\\"^5.1.1\\\",\\n    \\\"chai-http\\\": \\\"^5.0.0\\\",\\n    \\\"grunt\\\": \\\"^1.6.1\\\",\\n    \\\"grunt-cli\\\": \\\"^1.5.0\\\",\\n    \\\"mocha\\\": \\\"^10.7.3\\\",\\n    \\\"nyc\\\": \\\"^17.0.0\\\",\\n    \\\"regenerator-runtime\\\": \\\"^0.14.1\\\",\\n    \\\"snyk\\\": \\\"^1.1293.0\\\"\\n  },\\n  \\\"dependencies\\\": {\\n    \\\"compression\\\": \\\"^1.7.4\\\",\\n    \\\"core-js\\\": \\\"^3.38.1\\\",\\n    \\\"cors\\\": \\\"^2.8.5\\\",\\n    \\\"express\\\": \\\"^4.21.0\\\",\\n    \\\"fuse.js\\\": \\\"^7.0.0\\\",\\n    \\\"lunr\\\": \\\"^2.3.9\\\",\\n    \\\"redis\\\": \\\"^4.7.0\\\",\\n    \\\"stopword\\\": \\\"^3.1.1\\\",\\n    \\\"stream\\\": \\\"0.0.3\\\",\\n    \\\"stream-chain\\\": \\\"^3.1.0\\\",\\n    \\\"stream-json\\\": \\\"^1.8.0\\\"\\n  }\\n}\\n\",\"content_hash\":null,\"content_normalized\":null,\"matcher\":{\"name\":\"npmbower\",\"confidence\":90},\"matched_license\":\"BSD-2-Clause\",\"attribution\":null}]}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/thiss-mdq.assess.sqaaas/job/master/1/execution/node/79/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/thiss-mdq.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "licenses": [
+                                    {
+                                        "key": "bsd-3-clause",
+                                        "spdx_id": "BSD-3-Clause",
+                                        "meta": {
+                                            "title": "BSD 3-Clause \"New\" or \"Revised\" License",
+                                            "source": "https://spdx.org/licenses/BSD-3-Clause.html",
+                                            "description": "A permissive license similar to the <a href=\"/licenses/bsd-2-clause/\">BSD 2-Clause License</a>, but with a 3rd clause that prohibits others from using the name of the copyright holder or its contributors to promote derived products without written consent.",
+                                            "how": "Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.",
+                                            "using": {
+                                                "Flutter": "https://github.com/flutter/flutter/blob/master/LICENSE",
+                                                "LevelDB": "https://github.com/google/leveldb/blob/master/LICENSE",
+                                                "Quill": "https://github.com/quilljs/quill/blob/develop/LICENSE"
+                                            },
+                                            "featured": false,
+                                            "hidden": false,
+                                            "nickname": "Modified BSD License",
+                                            "note": null
+                                        },
+                                        "url": "http://choosealicense.com/licenses/bsd-3-clause/",
+                                        "rules": {
+                                            "permissions": [
+                                                {
+                                                    "tag": "commercial-use",
+                                                    "label": "Commercial use",
+                                                    "description": "The licensed material and derivatives may be used for commercial purposes."
+                                                },
+                                                {
+                                                    "tag": "modifications",
+                                                    "label": "Modification",
+                                                    "description": "The licensed material may be modified."
+                                                },
+                                                {
+                                                    "tag": "distribution",
+                                                    "label": "Distribution",
+                                                    "description": "The licensed material may be distributed."
+                                                },
+                                                {
+                                                    "tag": "private-use",
+                                                    "label": "Private use",
+                                                    "description": "The licensed material may be used and modified in private."
+                                                }
+                                            ],
+                                            "conditions": [
+                                                {
+                                                    "tag": "include-copyright",
+                                                    "label": "License and copyright notice",
+                                                    "description": "A copy of the license and copyright notice must be included with the licensed material."
+                                                }
+                                            ],
+                                            "limitations": [
+                                                {
+                                                    "tag": "liability",
+                                                    "label": "Liability",
+                                                    "description": "This license includes a limitation of liability."
+                                                },
+                                                {
+                                                    "tag": "warranty",
+                                                    "label": "Warranty",
+                                                    "description": "This license explicitly states that it does NOT provide any warranty."
+                                                }
+                                            ]
+                                        },
+                                        "fields": [
+                                            {
+                                                "name": "year",
+                                                "description": "The current year"
+                                            },
+                                            {
+                                                "name": "fullname",
+                                                "description": "The full name or username of the repository owner"
+                                            }
+                                        ],
+                                        "other": false,
+                                        "gpl": false,
+                                        "lgpl": false,
+                                        "cc": false
+                                    },
+                                    {
+                                        "key": "bsd-2-clause",
+                                        "spdx_id": "BSD-2-Clause",
+                                        "meta": {
+                                            "title": "BSD 2-Clause \"Simplified\" License",
+                                            "source": "https://spdx.org/licenses/BSD-2-Clause.html",
+                                            "description": "A permissive license that comes in two variants, the <a href=\"/licenses/bsd-2-clause/\">BSD 2-Clause</a> and <a href=\"/licenses/bsd-3-clause/\">BSD 3-Clause</a>. Both have very minute differences to the MIT license.",
+                                            "how": "Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.",
+                                            "using": {
+                                                "go-redis": "https://github.com/go-redis/redis/blob/master/LICENSE",
+                                                "Homebrew": "https://github.com/Homebrew/brew/blob/master/LICENSE.txt",
+                                                "Pony": "https://github.com/ponylang/ponyc/blob/master/LICENSE"
+                                            },
+                                            "featured": false,
+                                            "hidden": false,
+                                            "nickname": null,
+                                            "note": null
+                                        },
+                                        "url": "http://choosealicense.com/licenses/bsd-2-clause/",
+                                        "rules": {
+                                            "permissions": [
+                                                {
+                                                    "tag": "commercial-use",
+                                                    "label": "Commercial use",
+                                                    "description": "The licensed material and derivatives may be used for commercial purposes."
+                                                },
+                                                {
+                                                    "tag": "modifications",
+                                                    "label": "Modification",
+                                                    "description": "The licensed material may be modified."
+                                                },
+                                                {
+                                                    "tag": "distribution",
+                                                    "label": "Distribution",
+                                                    "description": "The licensed material may be distributed."
+                                                },
+                                                {
+                                                    "tag": "private-use",
+                                                    "label": "Private use",
+                                                    "description": "The licensed material may be used and modified in private."
+                                                }
+                                            ],
+                                            "conditions": [
+                                                {
+                                                    "tag": "include-copyright",
+                                                    "label": "License and copyright notice",
+                                                    "description": "A copy of the license and copyright notice must be included with the licensed material."
+                                                }
+                                            ],
+                                            "limitations": [
+                                                {
+                                                    "tag": "liability",
+                                                    "label": "Liability",
+                                                    "description": "This license includes a limitation of liability."
+                                                },
+                                                {
+                                                    "tag": "warranty",
+                                                    "label": "Warranty",
+                                                    "description": "This license explicitly states that it does NOT provide any warranty."
+                                                }
+                                            ]
+                                        },
+                                        "fields": [
+                                            {
+                                                "name": "year",
+                                                "description": "The current year"
+                                            },
+                                            {
+                                                "name": "fullname",
+                                                "description": "The full name or username of the repository owner"
+                                            }
+                                        ],
+                                        "other": false,
+                                        "gpl": false,
+                                        "lgpl": false,
+                                        "cc": false
+                                    }
+                                ],
+                                "matched_files": [
+                                    {
+                                        "filename": "LICENSE.txt",
+                                        "content": "Copyright 2018-2019 SUNET. All rights reserved.\n\nRedistribution and use in source and binary forms, with or without modification, are\npermitted provided that the following conditions are met:\n\n   1. Redistributions of source code must retain the above copyright notice, this list of\n      conditions and the following disclaimer.\n\n   2. Redistributions in binary form must reproduce the above copyright notice, this list\n      of conditions and the following disclaimer in the documentation and/or other materials\n      provided with the distribution.\n\nTHIS SOFTWARE IS PROVIDED BY SUNET ``AS IS'' AND ANY EXPRESS OR IMPLIED\nWARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND\nFITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL SUNET OR\nCONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR\nCONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON\nANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING\nNEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF\nADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n\nThe views and conclusions contained in the software and documentation are those of the\nauthors and should not be interpreted as representing official policies, either expressed\nor implied, of SUNET.\n",
+                                        "content_hash": "84f3cc8e44aac51a7e27cff87324242b9a17df8c",
+                                        "content_normalized": "redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: - redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. - redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. this software is provided by sunet ''as is'' and any express or implied warranties, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose are disclaimed. in no event shall sunet or contributors be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of this software, even if advised of the possibility of such damage. the views and conclusions contained in the software and documentation are those of the authors and should not be interpreted as representing official policies, either expressed or implied, of sunet.",
+                                        "matcher": {
+                                            "name": "dice",
+                                            "confidence": 86.69527896995709
+                                        },
+                                        "matched_license": "BSD-3-Clause",
+                                        "attribution": "Copyright 2018-2019 SUNET. All rights reserved."
+                                    },
+                                    {
+                                        "filename": "package.json",
+                                        "content": "{\n  \"name\": \"thiss-mdq\",\n  \"version\": \"1.5.0b6\",\n  \"description\": \"A minimal JSON-only MDQ\",\n  \"main\": \"index.js\",\n  \"homepage\": \"https://github.com/TheIdentitySelector/thiss-mdq\",\n  \"type\": \"module\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/TheIdentitySelector/thiss-mdq\"\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/TheIdentitySelector/thiss-mdq/issues\"\n  },\n  \"scripts\": {\n    \"snyk-protect\": \"snyk-protect\",\n    \"snyk-test\": \"snyk test\",\n    \"prepare\": \"npm run snyk-protect\",\n    \"start\": \"node index.js\",\n    \"test\": \"./node_modules/.bin/nyc --reporter=lcov -- ./node_modules/mocha/bin/_mocha --require @babel/register\"\n  },\n  \"author\": \"Leif Johansson <leifj@sunet.se>\",\n  \"license\": \"BSD-2-Clause\",\n  \"devDependencies\": {\n    \"@babel/cli\": \"^7.25.6\",\n    \"@babel/core\": \"^7.25.2\",\n    \"@babel/preset-env\": \"^7.25.4\",\n    \"@babel/register\": \"^7.24.6\",\n    \"@snyk/protect\": \"^1.1293.0\",\n    \"@types/chai\": \"^4.3.19\",\n    \"@types/chai-http\": \"^4.2.0\",\n    \"chai\": \"^5.1.1\",\n    \"chai-http\": \"^5.0.0\",\n    \"grunt\": \"^1.6.1\",\n    \"grunt-cli\": \"^1.5.0\",\n    \"mocha\": \"^10.7.3\",\n    \"nyc\": \"^17.0.0\",\n    \"regenerator-runtime\": \"^0.14.1\",\n    \"snyk\": \"^1.1293.0\"\n  },\n  \"dependencies\": {\n    \"compression\": \"^1.7.4\",\n    \"core-js\": \"^3.38.1\",\n    \"cors\": \"^2.8.5\",\n    \"express\": \"^4.21.0\",\n    \"fuse.js\": \"^7.0.0\",\n    \"lunr\": \"^2.3.9\",\n    \"redis\": \"^4.7.0\",\n    \"stopword\": \"^3.1.1\",\n    \"stream\": \"0.0.3\",\n    \"stream-chain\": \"^3.1.0\",\n    \"stream-json\": \"^1.8.0\"\n  }\n}\n",
+                                        "content_hash": null,
+                                        "content_normalized": null,
+                                        "matcher": {
+                                            "name": "npmbower",
+                                            "confidence": 90
+                                        },
+                                        "matched_license": "BSD-2-Clause",
+                                        "attribution": null
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "valid": true
+                },
+                "QC.Lic02.1": {
+                    "description": "Does the code use an Open Source Initiative's popular-recognized license?",
+                    "requirement_level": "MAY",
+                    "hint": "The Open Source Initiative (OSI) sets out the requirements for software to be legally declared as Open Source. OSI provides a list of popular licenses that shall match most of the demands. The license in use shall be in the list of <a href=\"https://opensource.org/license-list.html\" target=\"_blank\">OSI popular licenses</a> for this criterion to be successful",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "License BSD-3-Clause is listed under the Open Source Initiative popular category",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-licensee",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "licensee",
+                                "lang": "license",
+                                "version": "9.17.0",
+                                "docker": {
+                                    "image": "eoscsynergy/sqaaas-licensee:9.17.0",
+                                    "reviewed": "2021-06-28"
+                                },
+                                "ci": {
+                                    "name": "QC.Lic github.com/TheIdentitySelector/thiss-mdq licensee",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "licensee detect . --confidence 60 --json"
+                                    ],
+                                    "stdout_text": "{\"licenses\":[{\"key\":\"bsd-3-clause\",\"spdx_id\":\"BSD-3-Clause\",\"meta\":{\"title\":\"BSD 3-Clause \\\"New\\\" or \\\"Revised\\\" License\",\"source\":\"https://spdx.org/licenses/BSD-3-Clause.html\",\"description\":\"A permissive license similar to the <a href=\\\"/licenses/bsd-2-clause/\\\">BSD 2-Clause License</a>, but with a 3rd clause that prohibits others from using the name of the copyright holder or its contributors to promote derived products without written consent.\",\"how\":\"Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.\",\"using\":{\"Flutter\":\"https://github.com/flutter/flutter/blob/master/LICENSE\",\"LevelDB\":\"https://github.com/google/leveldb/blob/master/LICENSE\",\"Quill\":\"https://github.com/quilljs/quill/blob/develop/LICENSE\"},\"featured\":false,\"hidden\":false,\"nickname\":\"Modified BSD License\",\"note\":null},\"url\":\"http://choosealicense.com/licenses/bsd-3-clause/\",\"rules\":{\"permissions\":[{\"tag\":\"commercial-use\",\"label\":\"Commercial use\",\"description\":\"The licensed material and derivatives may be used for commercial purposes.\"},{\"tag\":\"modifications\",\"label\":\"Modification\",\"description\":\"The licensed material may be modified.\"},{\"tag\":\"distribution\",\"label\":\"Distribution\",\"description\":\"The licensed material may be distributed.\"},{\"tag\":\"private-use\",\"label\":\"Private use\",\"description\":\"The licensed material may be used and modified in private.\"}],\"conditions\":[{\"tag\":\"include-copyright\",\"label\":\"License and copyright notice\",\"description\":\"A copy of the license and copyright notice must be included with the licensed material.\"}],\"limitations\":[{\"tag\":\"liability\",\"label\":\"Liability\",\"description\":\"This license includes a limitation of liability.\"},{\"tag\":\"warranty\",\"label\":\"Warranty\",\"description\":\"This license explicitly states that it does NOT provide any warranty.\"}]},\"fields\":[{\"name\":\"year\",\"description\":\"The current year\"},{\"name\":\"fullname\",\"description\":\"The full name or username of the repository owner\"}],\"other\":false,\"gpl\":false,\"lgpl\":false,\"cc\":false},{\"key\":\"bsd-2-clause\",\"spdx_id\":\"BSD-2-Clause\",\"meta\":{\"title\":\"BSD 2-Clause \\\"Simplified\\\" License\",\"source\":\"https://spdx.org/licenses/BSD-2-Clause.html\",\"description\":\"A permissive license that comes in two variants, the <a href=\\\"/licenses/bsd-2-clause/\\\">BSD 2-Clause</a> and <a href=\\\"/licenses/bsd-3-clause/\\\">BSD 3-Clause</a>. Both have very minute differences to the MIT license.\",\"how\":\"Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.\",\"using\":{\"go-redis\":\"https://github.com/go-redis/redis/blob/master/LICENSE\",\"Homebrew\":\"https://github.com/Homebrew/brew/blob/master/LICENSE.txt\",\"Pony\":\"https://github.com/ponylang/ponyc/blob/master/LICENSE\"},\"featured\":false,\"hidden\":false,\"nickname\":null,\"note\":null},\"url\":\"http://choosealicense.com/licenses/bsd-2-clause/\",\"rules\":{\"permissions\":[{\"tag\":\"commercial-use\",\"label\":\"Commercial use\",\"description\":\"The licensed material and derivatives may be used for commercial purposes.\"},{\"tag\":\"modifications\",\"label\":\"Modification\",\"description\":\"The licensed material may be modified.\"},{\"tag\":\"distribution\",\"label\":\"Distribution\",\"description\":\"The licensed material may be distributed.\"},{\"tag\":\"private-use\",\"label\":\"Private use\",\"description\":\"The licensed material may be used and modified in private.\"}],\"conditions\":[{\"tag\":\"include-copyright\",\"label\":\"License and copyright notice\",\"description\":\"A copy of the license and copyright notice must be included with the licensed material.\"}],\"limitations\":[{\"tag\":\"liability\",\"label\":\"Liability\",\"description\":\"This license includes a limitation of liability.\"},{\"tag\":\"warranty\",\"label\":\"Warranty\",\"description\":\"This license explicitly states that it does NOT provide any warranty.\"}]},\"fields\":[{\"name\":\"year\",\"description\":\"The current year\"},{\"name\":\"fullname\",\"description\":\"The full name or username of the repository owner\"}],\"other\":false,\"gpl\":false,\"lgpl\":false,\"cc\":false}],\"matched_files\":[{\"filename\":\"LICENSE.txt\",\"content\":\"Copyright 2018-2019 SUNET. All rights reserved.\\n\\nRedistribution and use in source and binary forms, with or without modification, are\\npermitted provided that the following conditions are met:\\n\\n   1. Redistributions of source code must retain the above copyright notice, this list of\\n      conditions and the following disclaimer.\\n\\n   2. Redistributions in binary form must reproduce the above copyright notice, this list\\n      of conditions and the following disclaimer in the documentation and/or other materials\\n      provided with the distribution.\\n\\nTHIS SOFTWARE IS PROVIDED BY SUNET ``AS IS'' AND ANY EXPRESS OR IMPLIED\\nWARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND\\nFITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL SUNET OR\\nCONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR\\nCONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON\\nANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING\\nNEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF\\nADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\\n\\nThe views and conclusions contained in the software and documentation are those of the\\nauthors and should not be interpreted as representing official policies, either expressed\\nor implied, of SUNET.\\n\",\"content_hash\":\"84f3cc8e44aac51a7e27cff87324242b9a17df8c\",\"content_normalized\":\"redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: - redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. - redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. this software is provided by sunet ''as is'' and any express or implied warranties, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose are disclaimed. in no event shall sunet or contributors be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of this software, even if advised of the possibility of such damage. the views and conclusions contained in the software and documentation are those of the authors and should not be interpreted as representing official policies, either expressed or implied, of sunet.\",\"matcher\":{\"name\":\"dice\",\"confidence\":86.69527896995709},\"matched_license\":\"BSD-3-Clause\",\"attribution\":\"Copyright 2018-2019 SUNET. All rights reserved.\"},{\"filename\":\"package.json\",\"content\":\"{\\n  \\\"name\\\": \\\"thiss-mdq\\\",\\n  \\\"version\\\": \\\"1.5.0b6\\\",\\n  \\\"description\\\": \\\"A minimal JSON-only MDQ\\\",\\n  \\\"main\\\": \\\"index.js\\\",\\n  \\\"homepage\\\": \\\"https://github.com/TheIdentitySelector/thiss-mdq\\\",\\n  \\\"type\\\": \\\"module\\\",\\n  \\\"repository\\\": {\\n    \\\"type\\\": \\\"git\\\",\\n    \\\"url\\\": \\\"https://github.com/TheIdentitySelector/thiss-mdq\\\"\\n  },\\n  \\\"bugs\\\": {\\n    \\\"url\\\": \\\"https://github.com/TheIdentitySelector/thiss-mdq/issues\\\"\\n  },\\n  \\\"scripts\\\": {\\n    \\\"snyk-protect\\\": \\\"snyk-protect\\\",\\n    \\\"snyk-test\\\": \\\"snyk test\\\",\\n    \\\"prepare\\\": \\\"npm run snyk-protect\\\",\\n    \\\"start\\\": \\\"node index.js\\\",\\n    \\\"test\\\": \\\"./node_modules/.bin/nyc --reporter=lcov -- ./node_modules/mocha/bin/_mocha --require @babel/register\\\"\\n  },\\n  \\\"author\\\": \\\"Leif Johansson <leifj@sunet.se>\\\",\\n  \\\"license\\\": \\\"BSD-2-Clause\\\",\\n  \\\"devDependencies\\\": {\\n    \\\"@babel/cli\\\": \\\"^7.25.6\\\",\\n    \\\"@babel/core\\\": \\\"^7.25.2\\\",\\n    \\\"@babel/preset-env\\\": \\\"^7.25.4\\\",\\n    \\\"@babel/register\\\": \\\"^7.24.6\\\",\\n    \\\"@snyk/protect\\\": \\\"^1.1293.0\\\",\\n    \\\"@types/chai\\\": \\\"^4.3.19\\\",\\n    \\\"@types/chai-http\\\": \\\"^4.2.0\\\",\\n    \\\"chai\\\": \\\"^5.1.1\\\",\\n    \\\"chai-http\\\": \\\"^5.0.0\\\",\\n    \\\"grunt\\\": \\\"^1.6.1\\\",\\n    \\\"grunt-cli\\\": \\\"^1.5.0\\\",\\n    \\\"mocha\\\": \\\"^10.7.3\\\",\\n    \\\"nyc\\\": \\\"^17.0.0\\\",\\n    \\\"regenerator-runtime\\\": \\\"^0.14.1\\\",\\n    \\\"snyk\\\": \\\"^1.1293.0\\\"\\n  },\\n  \\\"dependencies\\\": {\\n    \\\"compression\\\": \\\"^1.7.4\\\",\\n    \\\"core-js\\\": \\\"^3.38.1\\\",\\n    \\\"cors\\\": \\\"^2.8.5\\\",\\n    \\\"express\\\": \\\"^4.21.0\\\",\\n    \\\"fuse.js\\\": \\\"^7.0.0\\\",\\n    \\\"lunr\\\": \\\"^2.3.9\\\",\\n    \\\"redis\\\": \\\"^4.7.0\\\",\\n    \\\"stopword\\\": \\\"^3.1.1\\\",\\n    \\\"stream\\\": \\\"0.0.3\\\",\\n    \\\"stream-chain\\\": \\\"^3.1.0\\\",\\n    \\\"stream-json\\\": \\\"^1.8.0\\\"\\n  }\\n}\\n\",\"content_hash\":null,\"content_normalized\":null,\"matcher\":{\"name\":\"npmbower\",\"confidence\":90},\"matched_license\":\"BSD-2-Clause\",\"attribution\":null}]}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/thiss-mdq.assess.sqaaas/job/master/1/execution/node/79/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/thiss-mdq.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "licenses": [
+                                    {
+                                        "key": "bsd-3-clause",
+                                        "spdx_id": "BSD-3-Clause",
+                                        "meta": {
+                                            "title": "BSD 3-Clause \"New\" or \"Revised\" License",
+                                            "source": "https://spdx.org/licenses/BSD-3-Clause.html",
+                                            "description": "A permissive license similar to the <a href=\"/licenses/bsd-2-clause/\">BSD 2-Clause License</a>, but with a 3rd clause that prohibits others from using the name of the copyright holder or its contributors to promote derived products without written consent.",
+                                            "how": "Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.",
+                                            "using": {
+                                                "Flutter": "https://github.com/flutter/flutter/blob/master/LICENSE",
+                                                "LevelDB": "https://github.com/google/leveldb/blob/master/LICENSE",
+                                                "Quill": "https://github.com/quilljs/quill/blob/develop/LICENSE"
+                                            },
+                                            "featured": false,
+                                            "hidden": false,
+                                            "nickname": "Modified BSD License",
+                                            "note": null
+                                        },
+                                        "url": "http://choosealicense.com/licenses/bsd-3-clause/",
+                                        "rules": {
+                                            "permissions": [
+                                                {
+                                                    "tag": "commercial-use",
+                                                    "label": "Commercial use",
+                                                    "description": "The licensed material and derivatives may be used for commercial purposes."
+                                                },
+                                                {
+                                                    "tag": "modifications",
+                                                    "label": "Modification",
+                                                    "description": "The licensed material may be modified."
+                                                },
+                                                {
+                                                    "tag": "distribution",
+                                                    "label": "Distribution",
+                                                    "description": "The licensed material may be distributed."
+                                                },
+                                                {
+                                                    "tag": "private-use",
+                                                    "label": "Private use",
+                                                    "description": "The licensed material may be used and modified in private."
+                                                }
+                                            ],
+                                            "conditions": [
+                                                {
+                                                    "tag": "include-copyright",
+                                                    "label": "License and copyright notice",
+                                                    "description": "A copy of the license and copyright notice must be included with the licensed material."
+                                                }
+                                            ],
+                                            "limitations": [
+                                                {
+                                                    "tag": "liability",
+                                                    "label": "Liability",
+                                                    "description": "This license includes a limitation of liability."
+                                                },
+                                                {
+                                                    "tag": "warranty",
+                                                    "label": "Warranty",
+                                                    "description": "This license explicitly states that it does NOT provide any warranty."
+                                                }
+                                            ]
+                                        },
+                                        "fields": [
+                                            {
+                                                "name": "year",
+                                                "description": "The current year"
+                                            },
+                                            {
+                                                "name": "fullname",
+                                                "description": "The full name or username of the repository owner"
+                                            }
+                                        ],
+                                        "other": false,
+                                        "gpl": false,
+                                        "lgpl": false,
+                                        "cc": false
+                                    },
+                                    {
+                                        "key": "bsd-2-clause",
+                                        "spdx_id": "BSD-2-Clause",
+                                        "meta": {
+                                            "title": "BSD 2-Clause \"Simplified\" License",
+                                            "source": "https://spdx.org/licenses/BSD-2-Clause.html",
+                                            "description": "A permissive license that comes in two variants, the <a href=\"/licenses/bsd-2-clause/\">BSD 2-Clause</a> and <a href=\"/licenses/bsd-3-clause/\">BSD 3-Clause</a>. Both have very minute differences to the MIT license.",
+                                            "how": "Create a text file (typically named LICENSE or LICENSE.txt) in the root of your source code and copy the text of the license into the file. Replace [year] with the current year and [fullname] with the name (or names) of the copyright holders.",
+                                            "using": {
+                                                "go-redis": "https://github.com/go-redis/redis/blob/master/LICENSE",
+                                                "Homebrew": "https://github.com/Homebrew/brew/blob/master/LICENSE.txt",
+                                                "Pony": "https://github.com/ponylang/ponyc/blob/master/LICENSE"
+                                            },
+                                            "featured": false,
+                                            "hidden": false,
+                                            "nickname": null,
+                                            "note": null
+                                        },
+                                        "url": "http://choosealicense.com/licenses/bsd-2-clause/",
+                                        "rules": {
+                                            "permissions": [
+                                                {
+                                                    "tag": "commercial-use",
+                                                    "label": "Commercial use",
+                                                    "description": "The licensed material and derivatives may be used for commercial purposes."
+                                                },
+                                                {
+                                                    "tag": "modifications",
+                                                    "label": "Modification",
+                                                    "description": "The licensed material may be modified."
+                                                },
+                                                {
+                                                    "tag": "distribution",
+                                                    "label": "Distribution",
+                                                    "description": "The licensed material may be distributed."
+                                                },
+                                                {
+                                                    "tag": "private-use",
+                                                    "label": "Private use",
+                                                    "description": "The licensed material may be used and modified in private."
+                                                }
+                                            ],
+                                            "conditions": [
+                                                {
+                                                    "tag": "include-copyright",
+                                                    "label": "License and copyright notice",
+                                                    "description": "A copy of the license and copyright notice must be included with the licensed material."
+                                                }
+                                            ],
+                                            "limitations": [
+                                                {
+                                                    "tag": "liability",
+                                                    "label": "Liability",
+                                                    "description": "This license includes a limitation of liability."
+                                                },
+                                                {
+                                                    "tag": "warranty",
+                                                    "label": "Warranty",
+                                                    "description": "This license explicitly states that it does NOT provide any warranty."
+                                                }
+                                            ]
+                                        },
+                                        "fields": [
+                                            {
+                                                "name": "year",
+                                                "description": "The current year"
+                                            },
+                                            {
+                                                "name": "fullname",
+                                                "description": "The full name or username of the repository owner"
+                                            }
+                                        ],
+                                        "other": false,
+                                        "gpl": false,
+                                        "lgpl": false,
+                                        "cc": false
+                                    }
+                                ],
+                                "matched_files": [
+                                    {
+                                        "filename": "LICENSE.txt",
+                                        "content": "Copyright 2018-2019 SUNET. All rights reserved.\n\nRedistribution and use in source and binary forms, with or without modification, are\npermitted provided that the following conditions are met:\n\n   1. Redistributions of source code must retain the above copyright notice, this list of\n      conditions and the following disclaimer.\n\n   2. Redistributions in binary form must reproduce the above copyright notice, this list\n      of conditions and the following disclaimer in the documentation and/or other materials\n      provided with the distribution.\n\nTHIS SOFTWARE IS PROVIDED BY SUNET ``AS IS'' AND ANY EXPRESS OR IMPLIED\nWARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND\nFITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL SUNET OR\nCONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR\nCONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR\nSERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON\nANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING\nNEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF\nADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n\nThe views and conclusions contained in the software and documentation are those of the\nauthors and should not be interpreted as representing official policies, either expressed\nor implied, of SUNET.\n",
+                                        "content_hash": "84f3cc8e44aac51a7e27cff87324242b9a17df8c",
+                                        "content_normalized": "redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met: - redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. - redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution. this software is provided by sunet ''as is'' and any express or implied warranties, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose are disclaimed. in no event shall sunet or contributors be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of this software, even if advised of the possibility of such damage. the views and conclusions contained in the software and documentation are those of the authors and should not be interpreted as representing official policies, either expressed or implied, of sunet.",
+                                        "matcher": {
+                                            "name": "dice",
+                                            "confidence": 86.69527896995709
+                                        },
+                                        "matched_license": "BSD-3-Clause",
+                                        "attribution": "Copyright 2018-2019 SUNET. All rights reserved."
+                                    },
+                                    {
+                                        "filename": "package.json",
+                                        "content": "{\n  \"name\": \"thiss-mdq\",\n  \"version\": \"1.5.0b6\",\n  \"description\": \"A minimal JSON-only MDQ\",\n  \"main\": \"index.js\",\n  \"homepage\": \"https://github.com/TheIdentitySelector/thiss-mdq\",\n  \"type\": \"module\",\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"https://github.com/TheIdentitySelector/thiss-mdq\"\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/TheIdentitySelector/thiss-mdq/issues\"\n  },\n  \"scripts\": {\n    \"snyk-protect\": \"snyk-protect\",\n    \"snyk-test\": \"snyk test\",\n    \"prepare\": \"npm run snyk-protect\",\n    \"start\": \"node index.js\",\n    \"test\": \"./node_modules/.bin/nyc --reporter=lcov -- ./node_modules/mocha/bin/_mocha --require @babel/register\"\n  },\n  \"author\": \"Leif Johansson <leifj@sunet.se>\",\n  \"license\": \"BSD-2-Clause\",\n  \"devDependencies\": {\n    \"@babel/cli\": \"^7.25.6\",\n    \"@babel/core\": \"^7.25.2\",\n    \"@babel/preset-env\": \"^7.25.4\",\n    \"@babel/register\": \"^7.24.6\",\n    \"@snyk/protect\": \"^1.1293.0\",\n    \"@types/chai\": \"^4.3.19\",\n    \"@types/chai-http\": \"^4.2.0\",\n    \"chai\": \"^5.1.1\",\n    \"chai-http\": \"^5.0.0\",\n    \"grunt\": \"^1.6.1\",\n    \"grunt-cli\": \"^1.5.0\",\n    \"mocha\": \"^10.7.3\",\n    \"nyc\": \"^17.0.0\",\n    \"regenerator-runtime\": \"^0.14.1\",\n    \"snyk\": \"^1.1293.0\"\n  },\n  \"dependencies\": {\n    \"compression\": \"^1.7.4\",\n    \"core-js\": \"^3.38.1\",\n    \"cors\": \"^2.8.5\",\n    \"express\": \"^4.21.0\",\n    \"fuse.js\": \"^7.0.0\",\n    \"lunr\": \"^2.3.9\",\n    \"redis\": \"^4.7.0\",\n    \"stopword\": \"^3.1.1\",\n    \"stream\": \"0.0.3\",\n    \"stream-chain\": \"^3.1.0\",\n    \"stream-json\": \"^1.8.0\"\n  }\n}\n",
+                                        "content_hash": null,
+                                        "content_normalized": null,
+                                        "matcher": {
+                                            "name": "npmbower",
+                                            "confidence": 90
+                                        },
+                                        "matched_license": "BSD-2-Clause",
+                                        "attribution": null
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "valid": true
+                }
+            },
+            "coverage": {
+                "percentage": 100,
+                "total_subcriteria": 4,
+                "success_subcriteria": 4
+            }
+        },
+        "QC.Sec": {
+            "valid": true,
+            "subcriteria": {
+                "QC.Sec02": {
+                    "description": "Is the source code passing Static Analysis Security Testing (SAST)?",
+                    "requirement_level": "MUST",
+                    "hint": "Please check & solve the security weaknesses found by the SAST tool",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "Source code files pass SAST checks performed by bandit tool",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-bandit",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "bandit",
+                                "lang": "Python",
+                                "version": "1.7.4",
+                                "docker": {
+                                    "dockerfile": "QC.Sec/bandit/Dockerfile",
+                                    "reviewed": "2022-03-04"
+                                },
+                                "ci": {
+                                    "name": "QC.Sec github.com/TheIdentitySelector/thiss-mdq bandit",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "bandit -f json --quiet  --confidence-level high --severity-level high --recursive ."
+                                    ],
+                                    "stdout_text": "{\n  \"errors\": [],\n  \"generated_at\": \"2024-10-09T11:47:00Z\",\n  \"metrics\": {\n    \"./docs/conf.py\": {\n      \"CONFIDENCE.HIGH\": 0,\n      \"CONFIDENCE.LOW\": 0,\n      \"CONFIDENCE.MEDIUM\": 0,\n      \"CONFIDENCE.UNDEFINED\": 0,\n      \"SEVERITY.HIGH\": 0,\n      \"SEVERITY.LOW\": 0,\n      \"SEVERITY.MEDIUM\": 0,\n      \"SEVERITY.UNDEFINED\": 0,\n      \"loc\": 35,\n      \"nosec\": 0,\n      \"skipped_tests\": 0\n    },\n    \"_totals\": {\n      \"CONFIDENCE.HIGH\": 0,\n      \"CONFIDENCE.LOW\": 0,\n      \"CONFIDENCE.MEDIUM\": 0,\n      \"CONFIDENCE.UNDEFINED\": 0,\n      \"SEVERITY.HIGH\": 0,\n      \"SEVERITY.LOW\": 0,\n      \"SEVERITY.MEDIUM\": 0,\n      \"SEVERITY.UNDEFINED\": 0,\n      \"loc\": 35,\n      \"nosec\": 0,\n      \"skipped_tests\": 0\n    }\n  },\n  \"results\": []\n}",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/thiss-mdq.assess.sqaaas/job/master/1/execution/node/88/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/thiss-mdq.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {
+                                "errors": [],
+                                "generated_at": "2024-10-09T11:47:00Z",
+                                "metrics": {
+                                    "./docs/conf.py": {
+                                        "CONFIDENCE.HIGH": 0,
+                                        "CONFIDENCE.LOW": 0,
+                                        "CONFIDENCE.MEDIUM": 0,
+                                        "CONFIDENCE.UNDEFINED": 0,
+                                        "SEVERITY.HIGH": 0,
+                                        "SEVERITY.LOW": 0,
+                                        "SEVERITY.MEDIUM": 0,
+                                        "SEVERITY.UNDEFINED": 0,
+                                        "loc": 35,
+                                        "nosec": 0,
+                                        "skipped_tests": 0
+                                    },
+                                    "_totals": {
+                                        "CONFIDENCE.HIGH": 0,
+                                        "CONFIDENCE.LOW": 0,
+                                        "CONFIDENCE.MEDIUM": 0,
+                                        "CONFIDENCE.UNDEFINED": 0,
+                                        "SEVERITY.HIGH": 0,
+                                        "SEVERITY.LOW": 0,
+                                        "SEVERITY.MEDIUM": 0,
+                                        "SEVERITY.UNDEFINED": 0,
+                                        "loc": 35,
+                                        "nosec": 0,
+                                        "skipped_tests": 0
+                                    }
+                                },
+                                "results": []
+                            }
+                        }
+                    ],
+                    "valid": true
+                }
+            },
+            "coverage": {
+                "percentage": 100,
+                "total_subcriteria": 1,
+                "success_subcriteria": 1
+            }
+        },
+        "QC.Sty": {
+            "valid": true,
+            "subcriteria": {
+                "QC.Sty01": {
+                    "description": "Is the software product following a style standard for Python files?",
+                    "requirement_level": "MUST",
+                    "hint": "Please check & solve the security weaknesses found by the linter tool",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "Python files are compliant with flake8 (pycodestyle, pyflakes, mccabe) standard",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-flake8",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "flake8",
+                                "lang": "Python",
+                                "version": "4.0.1 (mccabe: 0.6.1, pycodestyle: 2.8.0, pyflakes: 2.4.0)",
+                                "docker": {
+                                    "image": "pipelinecomponents/flake8:0.9.0",
+                                    "reviewed": "2022-03-04"
+                                },
+                                "ci": {
+                                    "name": "QC.Sty github.com/TheIdentitySelector/thiss-mdq flake8",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "flake8 ."
+                                    ],
+                                    "stdout_text": "",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/thiss-mdq.assess.sqaaas/job/master/1/execution/node/97/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/thiss-mdq.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": ""
+                        },
+                        {
+                            "valid": true,
+                            "message": "Dockerfile files are compliant with hadolint standard",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-jenkins_exit_status",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "hadolint",
+                                "lang": "Dockerfile",
+                                "version": "v2.8.0-0-g398770f-dirty",
+                                "docker": {
+                                    "image": "hadolint/hadolint:2.8.0-alpine",
+                                    "reviewed": "2021-06-21"
+                                },
+                                "ci": {
+                                    "name": "QC.Sty github.com/TheIdentitySelector/thiss-mdq hadolint",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "hadolint Dockerfile --failure-threshold error"
+                                    ],
+                                    "stdout_text": "",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/thiss-mdq.assess.sqaaas/job/master/1/execution/node/106/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/thiss-mdq.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {}
+                        },
+                        {
+                            "valid": true,
+                            "message": "JSON files are compliant with jsonlint standard",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-jenkins_exit_status",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "jsonlint",
+                                "lang": "JSON",
+                                "version": "1.6.3",
+                                "docker": {
+                                    "dockerfile": "QC.Sty/jsonlint/Dockerfile",
+                                    "reviewed": "2021-11-23"
+                                },
+                                "ci": {
+                                    "name": "QC.Sty github.com/TheIdentitySelector/thiss-mdq jsonlint",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "jsonlint-cli \"**/*.json\""
+                                    ],
+                                    "stdout_text": "",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/thiss-mdq.assess.sqaaas/job/master/1/execution/node/115/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/thiss-mdq.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {}
+                        }
+                    ],
+                    "valid": true
+                }
+            },
+            "coverage": {
+                "percentage": 100,
+                "total_subcriteria": 1,
+                "success_subcriteria": 1
+            }
+        },
+        "QC.Uni": {
+            "valid": false,
+            "subcriteria": {
+                "QC.Uni01": {
+                    "description": "Are the tests passing through an automated means?",
+                    "requirement_level": "MUST",
+                    "hint": "Please check & solve the failing test cases found by the {tool_name} tool",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "Test cases are not passing using None testing framework",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-jenkins_exit_status",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "pytest",
+                                "lang": "Python",
+                                "version": "7.1.3",
+                                "docker": {
+                                    "image": "eoscsynergy/sqaaas-pytest:7.1.3-alpha",
+                                    "reviewed": "2023-08-09"
+                                },
+                                "ci": {
+                                    "name": "QC.Uni github.com/TheIdentitySelector/thiss-mdq pytest",
+                                    "status": "FAILED",
+                                    "stdout_command": [
+                                        "pytest  --json-report  --json-report-indent 4"
+                                    ],
+                                    "stdout_text": "============================= test session starts ==============================\nplatform linux -- Python 3.9.17, pytest-7.1.3, pluggy-1.2.0\nrootdir: /sqaaas-build/github.com/TheIdentitySelector/thiss-mdq\nplugins: metadata-3.0.0, json-report-1.5.0\ncollected 0 items\n\n--------------------------------- JSON report ----------------------------------\nreport saved to: .report.json\n============================ no tests ran in 0.02s =============================",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/thiss-mdq.assess.sqaaas/job/master/1/execution/node/124/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/thiss-mdq.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": {}
+                        }
+                    ],
+                    "valid": false,
+                    "required_for_next_level_badge": false
+                }
+            },
+            "coverage": {
+                "percentage": 0,
+                "total_subcriteria": 1,
+                "success_subcriteria": 0
+            }
+        },
+        "QC.Ver": {
+            "valid": true,
+            "subcriteria": {
+                "QC.Ver01.0": {
+                    "description": "Are tags being used for releasing software",
+                    "requirement_level": "MUST",
+                    "hint": "Git tags are a convenient way to release software. This subcriterion checks if any git tag is present in the code history. More info on it-scm.com/book/en/v2/Git-Basics-Tagging\" target=\"_blank\">git tagging</a>",
+                    "evidence": [
+                        {
+                            "valid": true,
+                            "message": "The code repository uses tags for releasing new software versions",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-is_semver",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "get_git_tags.py",
+                                "lang": "Semantic Versioning",
+                                "version": "latest",
+                                "docker": {
+                                    "dockerfile": "QC.Ver/Dockerfile",
+                                    "reviewed": "2022-05-10"
+                                },
+                                "ci": {
+                                    "name": "QC.Ver github.com/TheIdentitySelector/thiss-mdq get_git_tags.py",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "get_git_tags.py"
+                                    ],
+                                    "stdout_text": "['1.5.0b6', '1.5.0b5', '1.5.0b4', '1.5.0b3', '1.5.0b2', '1.5.0b1', '1.4.18', '1.4.17', '1.4.16', '1.4.15', '1.4.14', '1.4.13', '1.4.12', '1.4.11', '1.4.10', '1.4.9', '1.4.8', '1.4.7', '1.4.6', '1.4.5', '1.4.4', '1.4.3', '1.4.2', '1.4.1', '1.4.0', '1.3.3', '1.3.3rc2', '1.3.3rc1', '1.3.2', '1.3.1', '1.3.0', '1.2.6', '1.2.5', '1.2.4', '1.2.3', '1.2.2', '1.2.1', '1.2.0', '1.1.4', '1.1.3', '1.1.2']",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/thiss-mdq.assess.sqaaas/job/master/1/execution/node/133/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/thiss-mdq.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": [
+                                "1.5.0b6",
+                                "1.5.0b5",
+                                "1.5.0b4",
+                                "1.5.0b3",
+                                "1.5.0b2",
+                                "1.5.0b1",
+                                "1.4.18",
+                                "1.4.17",
+                                "1.4.16",
+                                "1.4.15",
+                                "1.4.14",
+                                "1.4.13",
+                                "1.4.12",
+                                "1.4.11",
+                                "1.4.10",
+                                "1.4.9",
+                                "1.4.8",
+                                "1.4.7",
+                                "1.4.6",
+                                "1.4.5",
+                                "1.4.4",
+                                "1.4.3",
+                                "1.4.2",
+                                "1.4.1",
+                                "1.4.0",
+                                "1.3.3",
+                                "1.3.3rc2",
+                                "1.3.3rc1",
+                                "1.3.2",
+                                "1.3.1",
+                                "1.3.0",
+                                "1.2.6",
+                                "1.2.5",
+                                "1.2.4",
+                                "1.2.3",
+                                "1.2.2",
+                                "1.2.1",
+                                "1.2.0",
+                                "1.1.4",
+                                "1.1.3",
+                                "1.1.2"
+                            ]
+                        }
+                    ],
+                    "valid": true
+                },
+                "QC.Ver01": {
+                    "description": "Is the latest release compliant with Semantic Versioning (SemVer) specification?",
+                    "requirement_level": "SHOULD",
+                    "hint": "Latest tag must be compliant with <a href=\"https://semver.org\" target=\"_blank\">SemVer specification</a>",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "Latest release tag 1.5.0b6 found, but is not SemVer compliant",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-is_semver",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "get_git_tags.py",
+                                "lang": "Semantic Versioning",
+                                "version": "latest",
+                                "docker": {
+                                    "dockerfile": "QC.Ver/Dockerfile",
+                                    "reviewed": "2022-05-10"
+                                },
+                                "ci": {
+                                    "name": "QC.Ver github.com/TheIdentitySelector/thiss-mdq get_git_tags.py",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "get_git_tags.py"
+                                    ],
+                                    "stdout_text": "['1.5.0b6', '1.5.0b5', '1.5.0b4', '1.5.0b3', '1.5.0b2', '1.5.0b1', '1.4.18', '1.4.17', '1.4.16', '1.4.15', '1.4.14', '1.4.13', '1.4.12', '1.4.11', '1.4.10', '1.4.9', '1.4.8', '1.4.7', '1.4.6', '1.4.5', '1.4.4', '1.4.3', '1.4.2', '1.4.1', '1.4.0', '1.3.3', '1.3.3rc2', '1.3.3rc1', '1.3.2', '1.3.1', '1.3.0', '1.2.6', '1.2.5', '1.2.4', '1.2.3', '1.2.2', '1.2.1', '1.2.0', '1.1.4', '1.1.3', '1.1.2']",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/thiss-mdq.assess.sqaaas/job/master/1/execution/node/133/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/thiss-mdq.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": [
+                                "1.5.0b6",
+                                "1.5.0b5",
+                                "1.5.0b4",
+                                "1.5.0b3",
+                                "1.5.0b2",
+                                "1.5.0b1",
+                                "1.4.18",
+                                "1.4.17",
+                                "1.4.16",
+                                "1.4.15",
+                                "1.4.14",
+                                "1.4.13",
+                                "1.4.12",
+                                "1.4.11",
+                                "1.4.10",
+                                "1.4.9",
+                                "1.4.8",
+                                "1.4.7",
+                                "1.4.6",
+                                "1.4.5",
+                                "1.4.4",
+                                "1.4.3",
+                                "1.4.2",
+                                "1.4.1",
+                                "1.4.0",
+                                "1.3.3",
+                                "1.3.3rc2",
+                                "1.3.3rc1",
+                                "1.3.2",
+                                "1.3.1",
+                                "1.3.0",
+                                "1.2.6",
+                                "1.2.5",
+                                "1.2.4",
+                                "1.2.3",
+                                "1.2.2",
+                                "1.2.1",
+                                "1.2.0",
+                                "1.1.4",
+                                "1.1.3",
+                                "1.1.2"
+                            ]
+                        }
+                    ],
+                    "valid": false,
+                    "required_for_next_level_badge": false
+                },
+                "QC.Ver02": {
+                    "description": "Are all release tags with Semantic Versioning (SemVer) specification?",
+                    "requirement_level": "SHOULD",
+                    "hint": "Existent release tags shall be <a href=\"https://semver.org\" target=\"_blank\">SemVer</a> compliant for this subcriterion to be successful",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "Not all release tags are SemVer compliant",
+                            "plugin": {
+                                "name": "report2sqaaas-plugin-is_semver",
+                                "version": "2.1.0"
+                            },
+                            "tool": {
+                                "name": "get_git_tags.py",
+                                "lang": "Semantic Versioning",
+                                "version": "latest",
+                                "docker": {
+                                    "dockerfile": "QC.Ver/Dockerfile",
+                                    "reviewed": "2022-05-10"
+                                },
+                                "ci": {
+                                    "name": "QC.Ver github.com/TheIdentitySelector/thiss-mdq get_git_tags.py",
+                                    "status": "SUCCESS",
+                                    "stdout_command": [
+                                        "get_git_tags.py"
+                                    ],
+                                    "stdout_text": "['1.5.0b6', '1.5.0b5', '1.5.0b4', '1.5.0b3', '1.5.0b2', '1.5.0b1', '1.4.18', '1.4.17', '1.4.16', '1.4.15', '1.4.14', '1.4.13', '1.4.12', '1.4.11', '1.4.10', '1.4.9', '1.4.8', '1.4.7', '1.4.6', '1.4.5', '1.4.4', '1.4.3', '1.4.2', '1.4.1', '1.4.0', '1.3.3', '1.3.3rc2', '1.3.3rc1', '1.3.2', '1.3.1', '1.3.0', '1.2.6', '1.2.5', '1.2.4', '1.2.3', '1.2.2', '1.2.1', '1.2.0', '1.1.4', '1.1.3', '1.1.2']",
+                                    "url": "https://jenkins.eosc-synergy.eu/job/eosc-synergy-org/job/thiss-mdq.assess.sqaaas/job/master/1/execution/node/133/log?consoleFull"
+                                },
+                                "level": "REQUIRED",
+                                "build_repo": "https://github.com/eosc-synergy/thiss-mdq.assess.sqaaas"
+                            },
+                            "standard": {
+                                "title": "A set of Common Software Quality Assurance Baseline Criteria for Research Projects",
+                                "version": "v4.0",
+                                "url": "https://github.com/indigo-dc/sqa-baseline/releases/tag/v4.0"
+                            },
+                            "data_unstructured": [
+                                "1.5.0b6",
+                                "1.5.0b5",
+                                "1.5.0b4",
+                                "1.5.0b3",
+                                "1.5.0b2",
+                                "1.5.0b1",
+                                "1.4.18",
+                                "1.4.17",
+                                "1.4.16",
+                                "1.4.15",
+                                "1.4.14",
+                                "1.4.13",
+                                "1.4.12",
+                                "1.4.11",
+                                "1.4.10",
+                                "1.4.9",
+                                "1.4.8",
+                                "1.4.7",
+                                "1.4.6",
+                                "1.4.5",
+                                "1.4.4",
+                                "1.4.3",
+                                "1.4.2",
+                                "1.4.1",
+                                "1.4.0",
+                                "1.3.3",
+                                "1.3.3rc2",
+                                "1.3.3rc1",
+                                "1.3.2",
+                                "1.3.1",
+                                "1.3.0",
+                                "1.2.6",
+                                "1.2.5",
+                                "1.2.4",
+                                "1.2.3",
+                                "1.2.2",
+                                "1.2.1",
+                                "1.2.0",
+                                "1.1.4",
+                                "1.1.3",
+                                "1.1.2"
+                            ]
+                        }
+                    ],
+                    "valid": false,
+                    "required_for_next_level_badge": false
+                }
+            },
+            "coverage": {
+                "percentage": 33,
+                "total_subcriteria": 3,
+                "success_subcriteria": 1
+            }
+        },
+        "QC.Met": {
+            "valid": false,
+            "subcriteria": {
+                "QC.Met01": {
+                    "description": "Is the software citable?",
+                    "valid": false,
+                    "hint": "The two formats for software citation supported by SQAaaS are: 1) <a href=\"https://codemeta.github.io/\" target=\"_blank\">CodeMeta</a> and 2) <a href=\"https://citation-file-format.github.io/\" target=\"_blank\">Citation File Format (CFF)</a>. While CodeMeta provides you with a more comprehensive description, CFF is a more lightweight, good-enough approach to software (with built-in support by GitHub) citation. Both provide tools (<a href=\"https://codemeta.github.io/codemeta-generator/\" target=\"_blank\">CodeMeta generator</a>, <a href=\"https://citation-file-format.github.io/cff-initializer-javascript/#/\" target=\"_blank\">CFFINIT</a>)to easily generate a working citation file. Once having the file, be sure to add it to the root path of your code repo.",
+                    "evidence": [
+                        {
+                            "valid": false,
+                            "message": "No matching files found for language <CodeMeta> in repository searching by extensions or filenames\nNo matching files found for language <Citation File Format> in repository searching by extensions or filenames"
+                        }
+                    ],
+                    "required_for_next_level_badge": false
+                }
+            },
+            "coverage": {
+                "percentage": 0,
+                "total_subcriteria": 1,
+                "success_subcriteria": 0
+            }
+        }
+    },
+    "badge": {
+        "software": {
+            "criteria": {
+                "bronze": {
+                    "to_fulfill": [
+                        "QC.Lic",
+                        "QC.Doc",
+                        "QC.Acc"
+                    ],
+                    "missing": [
+                        "QC.Doc"
+                    ],
+                    "fulfilled": [
+                        "QC.Lic",
+                        "QC.Acc"
+                    ]
+                },
+                "silver": {
+                    "to_fulfill": [
+                        "QC.Met",
+                        "QC.Lic",
+                        "QC.Doc",
+                        "QC.Acc",
+                        "QC.Ver"
+                    ],
+                    "missing": [
+                        "QC.Doc",
+                        "QC.Met"
+                    ],
+                    "fulfilled": [
+                        "QC.Lic",
+                        "QC.Acc",
+                        "QC.Ver"
+                    ]
+                },
+                "gold": {
+                    "to_fulfill": [
+                        "QC.Sty",
+                        "QC.Met",
+                        "QC.Uni",
+                        "QC.Sec",
+                        "QC.Lic",
+                        "QC.Doc",
+                        "QC.Acc",
+                        "QC.Ver"
+                    ],
+                    "missing": [
+                        "QC.Met",
+                        "QC.Uni",
+                        "QC.Doc"
+                    ],
+                    "fulfilled": [
+                        "QC.Sty",
+                        "QC.Sec",
+                        "QC.Lic",
+                        "QC.Acc",
+                        "QC.Ver"
+                    ]
+                }
+            },
+            "data": {}
+        }
+    }
+}
